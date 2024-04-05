@@ -1,11 +1,3 @@
-# /usr/bin/python3
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# Please read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 from datetime import datetime
 from os import path, system
 from time import sleep
@@ -46,12 +38,7 @@ DISCLAIMER_TEXT = ""
 COPYRIGHT = f"©️ TeamUltroid {datetime.now().year}"
 
 HEADER = f"""{Fore.MAGENTA}
-╔╗ ╔╗╔╗  ╔╗            ╔╗
-║║ ║║║║ ╔╝╚╗           ║║
-║║ ║║║║ ╚╗╔╝╔═╗╔══╗╔╗╔═╝║
-║║ ║║║║  ║║ ║╔╝║╔╗║╠╣║╔╗║
-║╚═╝║║╚╗ ║╚╗║║ ║╚╝║║║║╚╝║
-╚═══╝╚═╝ ╚═╝╚╝ ╚══╝╚╝╚══╝\n{Fore.RESET}
+GOKU_USERBOT\n{Fore.RESET}
 """
 
 INFO_TEXT = f"""
@@ -62,7 +49,7 @@ INFO_TEXT = f"""
 2. You can install that requirement whenever you want with 'pip install' (a very basic python+bash knowledge is required.)
 
 3. Some of the plugins are disabled for 'Termux Users' to save resources (by adding in EXCLUDE_OFFICIAL).
-   - Read More - https://t.me/UltroidUpdates/36
+   - Read More - https://t.me/channelz_k
    - Also, way to enable the disabled plugins is mentioned in that post.
 
    # Disabled Plugins Name
