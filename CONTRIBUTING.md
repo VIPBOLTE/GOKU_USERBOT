@@ -1,7 +1,7 @@
 # Welcome To Contributing Guide
 Any contribution done to this repository will be appreciated! 🎉
 
-### About Ultroid
+### About GOKU_USERBOT
 - **GOKU_USERBOT** is Telegram Userbot, which allow you to perform many task easily. 
 - It's base core is a pip package named [`GOKU_USERBOT`](https://GitHub.com/VIPBOLTE/GOKU_USERBOT).
 - This repository, contains Ultroid's official plugin files.
