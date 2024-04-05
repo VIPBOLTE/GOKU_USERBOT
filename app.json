@@ -1,7 +1,7 @@
 {
     "name": "ᴍʀ ɢᴏᴋᴜ ᴜsᴇʀʙᴏᴛ",
     "description": "Pluggable telegram userbot, made in python using Telethon.",
-    "logo": "",
+    "logo": "https://telegra.ph/file/a0c824b3ad40e8bd86db7.jpg",
     "keywords": [
         "Telethon",
         "telegram",
