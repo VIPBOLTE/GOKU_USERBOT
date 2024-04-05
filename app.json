@@ -11,7 +11,7 @@
     ],
     "repository": "https://github.com/VIPBOLTE/GOKU_USERBOT",
     "website": "https://ultroid.tech",
-    "success_url": "https://t.me/TeamUltroid",
+    "success_url": "https://t.me/goku_groupz",
     "stack": "container",
     "env": {
         "API_ID": {
