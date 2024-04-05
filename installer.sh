@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
-REPO="https://github.com/TeamUltroid/Ultroid.git"
+REPO="https://github.com/VIPBOLTE/GOKU_USERBOT.git"
 CURRENT_DIR="$(pwd)"
 ENV_FILE_PATH=".env"
-DIR="/root/TeamUltroid"
+DIR="/root/VIPBOLTE"
 
 while [ $# -gt 0 ]; do
     case "$1" in
     --dir=*)
-        DIR="${1#*=}" || DIR="/root/TeamUltroid"
+        DIR="${1#*=}" || DIR="/root/VIPBOLTE"
         ;;
     --branch=*)
         BRANCH="${1#*=}" || BRANCH="main"
@@ -102,7 +102,7 @@ clone_repo() {
     cd $DIR
     if [ -d $DIR ]; then
         if [ -d $DIR/.git ]; then
-            echo -e "Updating Ultroid ${BRANCH}... "
+            echo -e "Updating GOKU_USERBOT ${BRANCH}... "
             cd $DIR
             git pull
             currentbranch="$(git rev-parse --abbrev-ref HEAD)"
@@ -133,7 +133,7 @@ clone_repo() {
             export BRANCH="main"
         fi
         mkdir -p $DIR
-        echo -e "Cloning Ultroid ${BRANCH}... "
+        echo -e "Cloning GOKU_USERBOT ${BRANCH}... "
         git clone -b $BRANCH $REPO $DIR
     fi
 }
@@ -189,8 +189,8 @@ dep_install() {
 }
 
 main() {
-    echo -e "Starting Ultroid Setup..."
-    if [ -d "pyUltroid" ] && [ -d "resources" ] && [ -d "plugins" ]; then
+    echo -e "Starting GOKU_USERBOT Setup..."
+    if [ -d "GOKU_USER" ] && [ -d "resources" ] && [ -d "plugins" ]; then
         DIR=$CURRENT_DIR
     fi
     if [ -f $ENV_FILE_PATH ]
