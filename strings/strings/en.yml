@@ -2,13 +2,10 @@ name: English
 natively: English
 
 authors:
-  - xditya
-  - rojserbest
-  - sppidy
-  - ProgrammingError
-  - aviskumar
+  - ALONE X HATER
+  - MR GOKU
 
-# pyUltroid
+# GOKU_USER
 py_c1: "Wrong string session. Copy paste correctly!"
 py_c2: "No String Session found. Quitting..."
 py_c3: "Your VC_SESSION Expired. Deleting VC_SESSION from redis...\nRenew/Change it to Use Voice/Video Chat from VC Account..."
