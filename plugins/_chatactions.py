@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 import asyncio
 
 from telethon import events
@@ -12,24 +5,24 @@ from telethon.errors.rpcerrorlist import UserNotParticipantError
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.utils import get_display_name
 
-from pyUltroid.dB import stickers
-from pyUltroid.dB.echo_db import check_echo
-from pyUltroid.dB.forcesub_db import get_forcesetting
-from pyUltroid.dB.gban_mute_db import is_gbanned
-from pyUltroid.dB.greetings_db import get_goodbye, get_welcome, must_thank
-from pyUltroid.dB.nsfw_db import is_profan
-from pyUltroid.fns.helper import inline_mention
-from pyUltroid.fns.tools import async_searcher, create_tl_btn, get_chatbot_reply
+from GOKU_USER.dB import stickers
+from GOKU_USER.dB.echo_db import check_echo
+from GOKU_USER.dB.forcesub_db import get_forcesetting
+from GOKU_USER.dB.gban_mute_db import is_gbanned
+from GOKU_USER.dB.greetings_db import get_goodbye, get_welcome, must_thank
+from GOKU_USER.dB.nsfw_db import is_profan
+from GOKU_USER.fns.helper import inline_mention
+from GOKU_USER.fns.tools import async_searcher, create_tl_btn, get_chatbot_reply
 
 try:
     from ProfanityDetector import detector
 except ImportError:
     detector = None
-from . import LOG_CHANNEL, LOGS, asst, get_string, types, udB, ultroid_bot
+from . import LOG_CHANNEL, LOGS, asst, get_string, types, udB, GOKU_USERBOT_bot
 from ._inline import something
 
 
-@ultroid_bot.on(events.ChatAction())
+@GOKU_USERBOT_bot.on(events.ChatAction())
 async def Function(event):
     try:
         await DummyHandler(event)
@@ -65,10 +58,10 @@ async def DummyHandler(ult):
             try:
                 await ultroid_bot(GetParticipantRequest(int(joinchat), user.id))
             except UserNotParticipantError:
-                await ultroid_bot.edit_permissions(
+                await GOKU_USERBOT_bot.edit_permissions(
                     ult.chat_id, user.id, send_messages=False
                 )
-                res = await ultroid_bot.inline_query(
+                res = await GOKU_USERBOT_bot.inline_query(
                     asst.me.username, f"fsub {user.id}_{joinchat}"
                 )
                 await res[0].click(ult.chat_id, reply_to=ult.action_message.id)
@@ -76,11 +69,11 @@ async def DummyHandler(ult):
     if ult.user_joined or ult.added_by:
         user = await ult.get_user()
         chat = await ult.get_chat()
-        # gbans and @UltroidBans checks
-        if udB.get_key("ULTROID_BANS"):
+        # gbans and @GOKU_USERBOTBans checks
+        if udB.get_key("GOKU_USERBOT_BANS"):
             try:
                 is_banned = await async_searcher(
-                    "https://bans.ultroid.tech/api/status",
+                    "https://bans.GOKU_USERBOT.tech/api/status",
                     json={"userId": user.id},
                     post=True,
                     re_json=True,
@@ -92,7 +85,7 @@ async def DummyHandler(ult):
                         view_messages=False,
                     )
                     await ult.respond(
-                        f'**@UltroidBans:** Banned user detected and banned!\n`{str(is_banned)}`.\nBan reason: {is_banned["reason"]}',
+                        f'**@GOKU_USERBOTBans:** Banned user detected and banned!\n`{str(is_banned)}`.\nBan reason: {is_banned["reason"]}',
                     )
 
             except BaseException:
@@ -193,7 +186,7 @@ async def DummyHandler(ult):
             await ult.reply(file=med)
 
 
-@ultroid_bot.on(events.NewMessage(incoming=True))
+@GOKU_USERBOT_bot.on(events.NewMessage(incoming=True))
 async def chatBot_replies(e):
     sender = await e.get_sender()
     if not isinstance(sender, types.User) or sender.bot:
@@ -221,7 +214,7 @@ async def chatBot_replies(e):
             await e.delete()
 
 
-@ultroid_bot.on(events.Raw(types.UpdateUserName))
+@GOKU_USERBOT_bot.on(events.Raw(types.UpdateUserName))
 async def uname_change(e):
     await uname_stuff(e.user_id, e.usernames[0] if e.usernames else None, e.first_name)
 
