@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available
 
@@ -24,19 +18,19 @@
 
 """
 
-from pyUltroid.dB.warn_db import add_warn, reset_warn, warns
+from GOKU_USER.dB.warn_db import add_warn, reset_warn, warns
 
-from . import eor, get_string, inline_mention, udB, ultroid_cmd
+from . import eor, get_string, inline_mention, udB, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="warn( (.*)|$)",
     manager=True,
     groups_only=True,
     admins_only=True,
 )
 async def warn(e):
-    ultroid_bot = e.client
+    GOKU_USERBOT_bot = e.client
     reply = await e.get_reply_message()
     if len(e.text) > 5 and " " not in e.text[5]:
         return
@@ -47,7 +41,7 @@ async def warn(e):
         try:
             user = e.text.split()[1]
             if user.startswith("@"):
-                ok = await ultroid_bot.get_entity(user)
+                ok = await GOKU_USERBOT_bot.get_entity(user)
                 user = ok.id
             else:
                 user = int(user)
@@ -69,24 +63,24 @@ async def warn(e):
     if count + 1 >= number:
         if "ban" in action:
             try:
-                await ultroid_bot.edit_permissions(e.chat_id, user, view_messages=False)
+                await GOKU_USERBOT_bot.edit_permissions(e.chat_id, user, view_messages=False)
             except BaseException:
                 return await e.eor("`Something Went Wrong.`", time=5)
         elif "kick" in action:
             try:
-                await ultroid_bot.kick_participant(e.chat_id, user)
+                await GOKU_USERBOT_bot.kick_participant(e.chat_id, user)
             except BaseException:
                 return await e.eor("`Something Went Wrong.`", time=5)
         elif "mute" in action:
             try:
-                await ultroid_bot.edit_permissions(
+                await GOKU_USERBOT_bot.edit_permissions(
                     e.chat_id, user, until_date=None, send_messages=False
                 )
             except BaseException:
                 return await e.eor("`Something Went Wrong.`", time=5)
         add_warn(e.chat_id, user, count + 1, r)
         c, r = warns(e.chat_id, user)
-        ok = await ultroid_bot.get_entity(user)
+        ok = await GOKU_USERBOT_bot.get_entity(user)
         user = inline_mention(ok)
         r = r.split("|$|")
         text = f"User {user} Got {action} Due to {count+1} Warns.\n\n"
@@ -95,7 +89,7 @@ async def warn(e):
         await e.eor(text)
         return reset_warn(e.chat_id, ok.id)
     add_warn(e.chat_id, user, count + 1, r)
-    ok = await ultroid_bot.get_entity(user)
+    ok = await GOKU_USERBOT_bot.get_entity(user)
     user = inline_mention(ok)
     await eor(
         e,
@@ -103,7 +97,7 @@ async def warn(e):
     )
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="resetwarn( (.*)|$)",
     manager=True,
     groups_only=True,
@@ -129,7 +123,7 @@ async def rwarn(e):
     await e.eor(f"Cleared All Warns of {user}.")
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="warns( (.*)|$)",
     manager=True,
     groups_only=True,
@@ -162,7 +156,7 @@ async def twarns(e):
         await e.eor("`No Warnings`")
 
 
-@ultroid_cmd(pattern="setwarn( (.*)|$)", manager=True)
+@GOKU_USERBOT_cmd(pattern="setwarn( (.*)|$)", manager=True)
 async def warnset(e):
     ok = e.pattern_match.group(1).strip()
     if not ok:
