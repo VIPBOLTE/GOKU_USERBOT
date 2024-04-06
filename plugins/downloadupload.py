@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 from . import get_help
 
 __doc__ = get_help("help_downloadupload")
@@ -18,8 +11,8 @@ from datetime import datetime as dt
 from aiohttp.client_exceptions import InvalidURL
 from telethon.errors.rpcerrorlist import MessageNotModifiedError
 
-from pyUltroid.fns.helper import time_formatter
-from pyUltroid.fns.tools import get_chat_and_msgid, set_attributes
+from GOKU_USER.fns.helper import time_formatter
+from GOKU_USER.fns.tools import get_chat_and_msgid, set_attributes
 
 from . import (
     LOGS,
@@ -31,11 +24,11 @@ from . import (
     get_string,
     progress,
     time_formatter,
-    ultroid_cmd,
+    GOKU_USERBOT_cmd,
 )
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="download( (.*)|$)",
 )
 async def down(event):
@@ -69,7 +62,7 @@ async def down(event):
     await msg.eor(f"`{filename}` `downloaded in {time_formatter(d*1000)}.`")
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="dl( (.*)|$)",
 )
 async def download(event):
@@ -130,7 +123,7 @@ async def download(event):
     await xx.eor(get_string("udl_2").format(file_name, t))
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="ul( (.*)|$)",
 )
 async def _(event):
