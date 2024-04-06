@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 import asyncio
 import os
 import time
@@ -14,16 +7,16 @@ import requests
 from telethon import Button, events
 from telethon.tl import functions, types  # pylint:ignore
 
-from pyUltroid import *
-from pyUltroid._misc._assistant import asst_cmd, callback, in_pattern
-from pyUltroid._misc._decorators import ultroid_cmd
-from pyUltroid._misc._wrappers import eod, eor
-from pyUltroid.dB import DEVLIST, ULTROID_IMAGES
-from pyUltroid.fns.helper import *
-from pyUltroid.fns.misc import *
-from pyUltroid.fns.tools import *
-from pyUltroid.startup._database import _BaseDatabase as Database
-from pyUltroid.version import __version__, ultroid_version
+from GOKU_USER import *
+from GOKU_USER._misc._assistant import asst_cmd, callback, in_pattern
+from GOKU_USER._misc._decorators import ultroid_cmd
+from GOKU_USER._misc._wrappers import eod, eor
+from GOKU_USER.dB import DEVLIST, ULTROID_IMAGES
+from GOKU_USER.fns.helper import *
+from GOKU_USER.fns.misc import *
+from GOKU_USER.fns.tools import *
+from GOKU_USER.startup._database import _BaseDatabase as Database
+from GOKU_USER.version import __version__, GOKU_USERBOT_version
 from strings import get_help, get_string
 
 udB: Database
@@ -31,11 +24,11 @@ udB: Database
 Redis = udB.get_key
 con = TgConverter
 quotly = Quotly()
-OWNER_NAME = ultroid_bot.full_name
-OWNER_ID = ultroid_bot.uid
+OWNER_NAME = GOKU_USERBOT_bot.full_name
+OWNER_ID = GOKU_USERBOT_bot.uid
 
-ultroid_bot: UltroidClient
-asst: UltroidClient
+GOKU_USERBOT_bot: GOKU_USERBOTClient
+asst: GOKU_USERBOTClient
 
 LOG_CHANNEL = udB.get_key("LOG_CHANNEL")
 
@@ -43,7 +36,7 @@ LOG_CHANNEL = udB.get_key("LOG_CHANNEL")
 def inline_pic():
     INLINE_PIC = udB.get_key("INLINE_PIC")
     if INLINE_PIC is None:
-        INLINE_PIC = choice(ULTROID_IMAGES)
+        INLINE_PIC = choice(GOKU_USERBOT_IMAGES)
     elif INLINE_PIC == False:
         INLINE_PIC = None
     return INLINE_PIC
@@ -55,7 +48,7 @@ List = []
 Dict = {}
 InlinePlugin = {}
 N = 0
-cmd = ultroid_cmd
+cmd = GOKU_USERBOT_cmd
 STUFF = {}
 
 # Chats, which needs to be ignore for some cases
@@ -67,8 +60,8 @@ NOSPAM_CHAT = [
     -1001387666944,  # PyrogramChat
     -1001109500936,  # TelethonChat
     -1001050982793,  # Python
-    -1001256902287,  # DurovsChat
-    -1001473548283,  # SharingUserbot
+    -1002126989582,  # goku_groupz
+    -1001840775426,  # goopu_group
 ]
 
 KANGING_STR = [
