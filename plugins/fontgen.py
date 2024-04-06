@@ -1,17 +1,10 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 from . import get_help
 
 __doc__ = get_help("help_fontgen")
 
 import string
 
-from . import eod, ultroid_cmd
+from . import eod, GOKU_USERBOT_cmd
 
 _default = string.ascii_letters
 Fonts = {
@@ -22,7 +15,7 @@ Fonts = {
 }
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="font( (.*)|$)",
 )
 async def _(e):
