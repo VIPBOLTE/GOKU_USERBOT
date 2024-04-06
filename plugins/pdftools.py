@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -41,7 +35,7 @@ except ImportError:
 from PyPDF2 import PdfFileMerger, PdfFileReader, PdfFileWriter
 from telethon.errors.rpcerrorlist import PhotoSaveFileInvalidError
 
-from pyUltroid.fns.tools import four_point_transform
+from GOKU_USER.fns.tools import four_point_transform
 
 from . import (
     HNDLR,
@@ -51,14 +45,14 @@ from . import (
     downloader,
     eor,
     get_string,
-    ultroid_cmd,
+    GOKU_USERBOT_cmd,
 )
 
 if not os.path.isdir("pdf"):
     os.mkdir("pdf")
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="pdf( (.*)|$)",
 )
 async def pdfseimg(event):
@@ -120,7 +114,7 @@ async def pdfseimg(event):
         os.remove("ult.png")
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="pdtext( (.*)|$)",
 )
 async def pdfsetxt(event):
@@ -176,7 +170,7 @@ async def pdfsetxt(event):
     os.remove(dl)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="pdscan( (.*)|$)",
 )
 async def imgscan(event):
@@ -246,7 +240,7 @@ async def imgscan(event):
     os.remove(scann)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="pdsave( (.*)|$)",
 )
 async def savepdf(event):
@@ -326,7 +320,7 @@ async def savepdf(event):
     os.remove(ultt)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="pdsend( (.*)|$)",
 )
 async def sendpdf(event):
