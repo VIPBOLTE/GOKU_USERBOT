@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -62,9 +56,9 @@ try:
 except ImportError:
     Image = None
 
-from pyUltroid._misc._assistant import asst_cmd
-from pyUltroid.dB.gban_mute_db import is_gbanned
-from pyUltroid.fns.tools import get_chat_and_msgid
+from GOKU_USER._misc._assistant import asst_cmd
+from GOKU_USER.dB.gban_mute_db import is_gbanned
+from GOKU_USER.fns.tools import get_chat_and_msgid
 
 try:
     from telegraph import upload_file as uf
@@ -93,7 +87,7 @@ from telethon.tl.types import (
 )
 from telethon.utils import get_peer_id
 
-from pyUltroid.fns.info import get_chat_info
+from GOKU_USER.fns.info import get_chat_info
 
 from . import (
     HNDLR,
@@ -113,7 +107,7 @@ from . import (
     json_parser,
     mediainfo,
     udB,
-    ultroid_cmd,
+    GOKU_USERBOT_cmd,
 )
 
 # =================================================================#
@@ -123,13 +117,13 @@ TMP_DOWNLOAD_DIRECTORY = "resources/downloads/"
 _copied_msg = {}
 
 
-@ultroid_cmd(pattern="kickme$", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="kickme$", fullsudo=True)
 async def leave(ult):
     await ult.eor(f"`{ult.client.me.first_name} has left this group, bye!!.`")
     await ult.client(LeaveChannelRequest(ult.chat_id))
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="date$",
 )
 async def date(event):
@@ -140,7 +134,7 @@ async def date(event):
     await event.eor(f"`{k}\n\n{d}`")
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="listreserved$",
 )
 async def _(event):
@@ -154,7 +148,7 @@ async def _(event):
     await event.eor(output_str)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="stats$",
 )
 async def stats(
@@ -229,7 +223,7 @@ async def stats(
     await ok.edit(response)
 
 
-@ultroid_cmd(pattern="paste( (.*)|$)", manager=True, allow_all=True)
+@GOKU_USERBOT_cmd(pattern="paste( (.*)|$)", manager=True, allow_all=True)
 async def _(event):
     try:
         input_str = event.text.split(maxsplit=1)[1]
@@ -276,7 +270,7 @@ async def _(event):
         await xx.edit(reply_text)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="info( (.*)|$)",
     manager=True,
 )
@@ -377,7 +371,7 @@ async def _(event):
     await xx.delete()
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="invite( (.*)|$)",
     groups_only=True,
 )
@@ -415,7 +409,7 @@ async def _(ult):
                 await xx.edit(str(e))
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="rmbg($| (.*))",
 )
 async def abs_rmbg(event):
@@ -471,7 +465,7 @@ async def abs_rmbg(event):
     await xx.delete()
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="telegraph( (.*)|$)",
 )
 async def telegraphcmd(event):
@@ -511,7 +505,7 @@ async def telegraphcmd(event):
     )
 
 
-@ultroid_cmd(pattern="json( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="json( (.*)|$)")
 async def _(event):
     reply_to_id = None
     match = event.pattern_match.group(1).strip()
@@ -558,7 +552,7 @@ async def _(event):
         await event.eor(f"```{msg or None}```")
 
 
-@ultroid_cmd(pattern="suggest( (.*)|$)", manager=True)
+@GOKU_USERBOT_cmd(pattern="suggest( (.*)|$)", manager=True)
 async def sugg(event):
     sll = event.text.split(maxsplit=1)
     try:
@@ -594,7 +588,7 @@ async def sugg(event):
     await event.delete()
 
 
-@ultroid_cmd(pattern="ipinfo( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="ipinfo( (.*)|$)")
 async def ipinfo(event):
     ip = event.text.split()
     ipaddr = ""
@@ -642,7 +636,7 @@ async def ipinfo(event):
         await event.eor(f"ERROR:\n{err}\n{msg}", time=5)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="cpy$",
 )
 async def copp(event):
@@ -658,7 +652,7 @@ async def pepsodent(event):
     await toothpaste(event)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="pst$",
 )
 async def colgate(event):
@@ -678,7 +672,7 @@ async def toothpaste(event):
     await event.delete()
 
 
-@ultroid_cmd(pattern="thumb$")
+@GOKU_USERBOT_cmd(pattern="thumb$")
 async def thumb_dl(event):
     reply = await event.get_reply_message()
     if not (reply and reply.file):
@@ -692,7 +686,7 @@ async def thumb_dl(event):
     os.remove(m)
 
 
-@ultroid_cmd(pattern="getmsg( ?(.*)|$)")
+@GOKU_USERBOT_cmd(pattern="getmsg( ?(.*)|$)")
 async def get_restriced_msg(event):
     match = event.pattern_match.group(1).strip()
     if not match:
@@ -702,7 +696,7 @@ async def get_restriced_msg(event):
     chat, msg = get_chat_and_msgid(match)
     if not (chat and msg):
         return await event.eor(
-            f"{get_string('gms_1')}!\nEg: `https://t.me/TeamUltroid/3 or `https://t.me/c/1313492028/3`"
+            f"{get_string('gms_1')}!\nEg: `https://t.me/goku_groupz or `https://t.me/goopu_group`"
         )
     try:
         message = await event.client.get_messages(chat, ids=msg)
