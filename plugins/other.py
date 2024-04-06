@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -20,10 +14,10 @@
     Forward that replied msg to ur saved messages.
 """
 
-from . import HNDLR, eod, get_string, ultroid_cmd
+from . import HNDLR, eod, get_string, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(pattern="(send|dm)( (.*)|$)", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="(send|dm)( (.*)|$)", fullsudo=True)
 async def dm(e):
     if len(e.text.split()) <= 1:
         return await e.eor(get_string("dm_1"), time=5)
@@ -48,7 +42,7 @@ async def dm(e):
         await e.eor(get_string("dm_4").format(m, HNDLR), time=5)
 
 
-@ultroid_cmd(pattern="fwdreply( (.*)|$)", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="fwdreply( (.*)|$)", fullsudo=True)
 async def _(e):
     message = e.pattern_match.group(1).strip()
     if not e.reply_to_msg_id:
@@ -61,7 +55,7 @@ async def _(e):
     await e.eor(get_string("dm_5"), time=5)
 
 
-@ultroid_cmd(pattern="(f|)save$")
+@GOKU_USERBOT_cmd(pattern="(f|)save$")
 async def saf(e):
     x = await e.get_reply_message()
     if not x:
