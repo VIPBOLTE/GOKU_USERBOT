@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 from . import get_help
 
 __doc__ = get_help("help_admintools")
@@ -18,14 +11,14 @@ from telethon.tl.functions.messages import GetFullChatRequest, SetHistoryTTLRequ
 from telethon.tl.types import InputMessagesFilterPinned
 from telethon.utils import get_display_name
 
-from pyUltroid.dB import DEVLIST
-from pyUltroid.fns.admins import ban_time
-from pyUltroid.fns.info import get_uinfo
+from GOKU_USER.dB import DEVLIST
+from GOKU_USER.fns.admins import ban_time
+from GOKU_USER.fns.info import get_uinfo
 
-from . import HNDLR, LOGS, eod, eor, get_string, inline_mention, types, ultroid_cmd
+from . import HNDLR, LOGS, eod, eor, get_string, inline_mention, types, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="promote( (.*)|$)",
     admins_only=True,
     manager=True,
@@ -68,7 +61,7 @@ async def prmte(ult):
         return await xx.edit(f"`{ex}`")
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="demote( (.*)|$)",
     admins_only=True,
     manager=True,
@@ -98,7 +91,7 @@ async def dmote(ult):
         return await xx.edit(f"`{ex}`")
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="ban( (.*)|$)",
     admins_only=True,
     manager=True,
@@ -128,7 +121,7 @@ async def bban(ult):
     await eod(ult, text)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="unban( (.*)|$)",
     admins_only=True,
     manager=True,
@@ -158,7 +151,7 @@ async def uunban(ult):
     await xx.edit(text)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="kick( (.*)|$)",
     manager=True,
     require="ban_users",
@@ -197,7 +190,7 @@ async def kck(ult):
     await xx.edit(text)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="tban( (.*)|$)",
     admins_only=True,
     manager=True,
@@ -237,7 +230,7 @@ async def tkicki(e):
         return await e.eor(str(m))
 
 
-@ultroid_cmd(pattern="pin$", manager=True, require="pin_messages", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="pin$", manager=True, require="pin_messages", fullsudo=True)
 async def pin(msg):
     if not msg.is_reply:
         return await eor(msg, get_string("pin_1"))
@@ -255,7 +248,7 @@ async def pin(msg):
     await eor(msg, text)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="unpin($| (.*))",
     manager=True,
     require="pin_messages",
@@ -278,7 +271,7 @@ async def unp(ult):
     await xx.edit("`Unpinned!`")
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="tpin( (.*)|$)",
     admins_only=True,
     manager=True,
@@ -306,7 +299,7 @@ async def pin_message(ult):
         LOGS.exception(er)
 
 
-@ultroid_cmd(pattern="purge( (.*)|$)", manager=True, require="delete_messages")
+@GOKU_USERBOT_cmd(pattern="purge( (.*)|$)", manager=True, require="delete_messages")
 async def fastpurger(purg):
     match = purg.pattern_match.group(1).strip()
     try:
@@ -340,7 +333,7 @@ async def fastpurger(purg):
     await purg.eor("__Fast purge complete!__", time=5)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="purgeme( (.*)|$)",
 )
 async def fastpurgerme(purg):
@@ -380,7 +373,7 @@ async def fastpurgerme(purg):
     )
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="purgeall$",
 )
 async def _(e):
@@ -399,7 +392,7 @@ async def _(e):
         return await e.eor(str(er), time=5)
 
 
-@ultroid_cmd(pattern="pinned", manager=True, groups_only=True)
+@GOKU_USERBOT_cmd(pattern="pinned", manager=True, groups_only=True)
 async def djshsh(event):
     chat = await event.get_chat()
     if isinstance(chat, types.Chat):
@@ -416,7 +409,7 @@ async def djshsh(event):
         await event.eor(get_string("pinned_2").format(msg.message_link))
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="listpinned$",
 )
 async def get_all_pinned(event):
@@ -447,7 +440,7 @@ async def get_all_pinned(event):
     await x.edit(m + a, parse_mode="html")
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="autodelete( (.*)|$)",
     admins_only=True,
 )
