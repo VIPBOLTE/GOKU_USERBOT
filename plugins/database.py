@@ -1,11 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
-
 from . import get_help
 
 __doc__ = get_help("help_database")
@@ -13,10 +5,10 @@ __doc__ = get_help("help_database")
 
 import re
 
-from . import Redis, eor, get_string, udB, ultroid_cmd
+from . import Redis, eor, get_string, udB, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(pattern="setdb( (.*)|$)", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="setdb( (.*)|$)", fullsudo=True)
 async def _(ult):
     match = ult.pattern_match.group(1).strip()
     if not match:
@@ -36,7 +28,7 @@ async def _(ult):
         await ult.eor(get_string("com_7"))
 
 
-@ultroid_cmd(pattern="deldb( (.*)|$)", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="deldb( (.*)|$)", fullsudo=True)
 async def _(ult):
     key = ult.pattern_match.group(1).strip()
     if not key:
@@ -56,7 +48,7 @@ async def _(ult):
         await ult.eor(get_string("com_7"))
 
 
-@ultroid_cmd(pattern="rendb( (.*)|$)", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="rendb( (.*)|$)", fullsudo=True)
 async def _(ult):
     match = ult.pattern_match.group(1).strip()
     if not match:
