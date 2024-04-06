@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -63,7 +57,7 @@ from telethon.tl.types import (
     DocumentAttributeVideo,
 )
 
-from pyUltroid.fns.tools import metadata, translate
+from GOKU_USER.fns.tools import metadata, translate
 
 from . import (
     HNDLR,
@@ -81,7 +75,7 @@ from . import humanbytes as hb
 from . import inline_mention, is_url_ok, json_parser, mediainfo, ultroid_cmd
 
 
-@ultroid_cmd(pattern="tr( (.*)|$)", manager=True)
+@GOKU_USERBOT_cmd(pattern="tr( (.*)|$)", manager=True)
 async def _(event):
     input = event.pattern_match.group(1).strip().split(maxsplit=1)
     txt = input[1] if len(input) > 1 else None
@@ -106,7 +100,7 @@ async def _(event):
         await event.eor(str(exc), time=5)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="id( (.*)|$)",
     manager=True,
 )
@@ -132,7 +126,7 @@ async def _(event):
     await ult.eor(data)
 
 
-@ultroid_cmd(pattern="bots( (.*)|$)", groups_only=True, manager=True)
+@GOKU_USERBOT_cmd(pattern="bots( (.*)|$)", groups_only=True, manager=True)
 async def _(ult):
     mentions = "• **Bots in this Chat**: \n"
     if input_str := ult.pattern_match.group(1).strip():
@@ -157,7 +151,7 @@ async def _(ult):
     await ult.eor(mentions)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="hl( (.*)|$)",
 )
 async def _(ult):
@@ -174,7 +168,7 @@ async def _(ult):
     await ult.eor(f"[{text}]({input_})", link_preview=False)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="circle$",
 )
 async def _(e):
@@ -254,7 +248,7 @@ FilesEMOJI = {
 }
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="ls( (.*)|$)",
 )
 async def _(e):
@@ -338,7 +332,7 @@ async def _(e):
         await e.delete()
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="sg( (.*)|$)",
 )
 async def lastname(steal):
@@ -389,7 +383,7 @@ async def lastname(steal):
         await lol.edit("Error: @SangMataInfo_bot is not responding!.")
 
 
-@ultroid_cmd(pattern="webshot( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="webshot( (.*)|$)")
 async def webss(event):
     xx = await event.eor(get_string("com_1"))
     xurl = event.pattern_match.group(1).strip()
@@ -437,7 +431,7 @@ async def webss(event):
     await xx.delete()
 
 
-@ultroid_cmd(pattern="shorturl")
+@GOKU_USERBOT_cmd(pattern="shorturl")
 async def magic(event):
     try:
         match = event.text.split(maxsplit=1)[1].strip()
