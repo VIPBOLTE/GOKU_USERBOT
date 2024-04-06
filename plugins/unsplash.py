@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -11,12 +5,12 @@
     Unsplash Image Search.
 """
 
-from pyUltroid.fns.misc import unsplashsearch
+from GOKU_USER.fns.misc import unsplashsearch
 
-from . import asyncio, download_file, get_string, os, ultroid_cmd
+from . import asyncio, download_file, get_string, os, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(pattern="unsplash( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="unsplash( (.*)|$)")
 async def searchunsl(ult):
     match = ult.pattern_match.group(1).strip()
     if not match:
