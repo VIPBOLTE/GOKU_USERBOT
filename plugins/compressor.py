@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 from . import get_help
 
 __doc__ = get_help("help_compressor")
@@ -19,7 +12,7 @@ from datetime import datetime as dt
 from telethon.errors.rpcerrorlist import MessageNotModifiedError
 from telethon.tl.types import DocumentAttributeVideo
 
-from pyUltroid.fns.tools import metadata
+from GOKU_USER.fns.tools import metadata
 
 from . import (
     ULTConfig,
@@ -30,12 +23,12 @@ from . import (
     math,
     mediainfo,
     time_formatter,
-    ultroid_cmd,
+    GOKU_USERBOT_cmd,
     uploader,
 )
 
 
-@ultroid_cmd(pattern="compress( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="compress( (.*)|$)")
 async def _(e):
     cr = e.pattern_match.group(1).strip()
     crf = 27
