@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -42,7 +36,7 @@ import asyncio
 import re
 from os import remove
 
-from pyUltroid.dB import DEVLIST
+from GOKU_USER.dB import DEVLIST
 
 try:
     from tabulate import tabulate
@@ -58,7 +52,7 @@ from telethon.tl.functions.contacts import (
 from telethon.tl.functions.messages import ReportSpamRequest
 from telethon.utils import get_display_name, resolve_bot_file_id
 
-from pyUltroid.dB.base import KeyManager
+from GOKU_USER.dB.base import KeyManager
 
 from . import *
 
