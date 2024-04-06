@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 import re
 
 from telethon import Button
@@ -24,14 +17,14 @@ from . import (
     get_string,
     in_pattern,
     inline_mention,
-    ultroid_bot,
-    ultroid_cmd,
+    GOKU_USERBOT_bot,
+    GOKU_USERBOT_cmd,
 )
 
 buddhhu = {}
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="wspr( (.*)|$)",
 )
 async def _(e):
@@ -117,7 +110,7 @@ async def _(e):
         query = zzz[1]
         if query.isdigit():
             query = int(query)
-        logi = await ultroid_bot(gu(id=query))
+        logi = await GOKU_USERBOT_bot(gu(id=query))
         user = logi.users[0]
         mention = inline_mention(user)
         x = user.status
