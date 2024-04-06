@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -23,13 +17,13 @@ try:
     from PIL import Image
 except ImportError:
     Image = None
-from pyUltroid.fns.misc import unsplashsearch
-from pyUltroid.fns.tools import LogoHelper
+from GOKU_USER.fns.misc import unsplashsearch
+from GOKU_USER.fns.tools import LogoHelper
 
 from . import OWNER_ID, OWNER_NAME, download_file, get_string, mediainfo, ultroid_cmd
 
 
-@ultroid_cmd(pattern="logo( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="logo( (.*)|$)")
 async def logo_gen(event):
     xx = await event.eor(get_string("com_1"))
     name = event.pattern_match.group(1).strip()
@@ -68,7 +62,7 @@ async def logo_gen(event):
         else:
             pics = []
             async for i in event.client.iter_messages(
-                "@UltroidLogos", filter=InputMessagesFilterPhotos
+                "@GOKU_USERBOTLogos", filter=InputMessagesFilterPhotos
             ):
                 pics.append(i)
             id_ = random.choice(pics)
