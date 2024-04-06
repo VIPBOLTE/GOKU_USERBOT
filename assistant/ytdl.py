@@ -1,11 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
-
 import os
 import re
 
@@ -18,14 +10,14 @@ from telethon.errors.rpcerrorlist import FilePartLengthInvalidError, MediaEmptyE
 from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
 from telethon.tl.types import InputWebDocument as wb
 
-from pyUltroid.fns.helper import (
+from GOKU_USER.fns.helper import (
     bash,
     fast_download,
     humanbytes,
     numerize,
     time_formatter,
 )
-from pyUltroid.fns.ytdl import dler, get_buttons, get_formats
+from GOKU_USER.fns.ytdl import dler, get_buttons, get_formats
 
 from . import LOGS, asst, callback, in_pattern, udB
 
