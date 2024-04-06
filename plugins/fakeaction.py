@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 from . import get_help
 
 __doc__ = get_help("help_fakeaction")
@@ -12,12 +5,12 @@ __doc__ = get_help("help_fakeaction")
 import math
 import time
 
-from pyUltroid.fns.admins import ban_time
+from GOKU_USER.fns.admins import ban_time
 
-from . import asyncio, get_string, ultroid_cmd
+from . import asyncio, get_string, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="f(typing|audio|contact|document|game|location|sticker|photo|round|video)( (.*)|$)"
 )
 async def _(e):
