@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 from . import get_help
 
 __doc__ = get_help("help_bot")
@@ -21,7 +14,7 @@ from telethon.errors.rpcerrorlist import (
     ChatSendMediaForbiddenError,
 )
 
-from pyUltroid.version import __version__ as UltVer
+from GOKU_USER.version import __version__ as UltVer
 
 from . import HOSTED_ON, LOGS
 
@@ -37,7 +30,7 @@ from . import (
     ATRA_COL,
     LOGS,
     OWNER_NAME,
-    ULTROID_IMAGES,
+    GOKU_USERBOT_IMAGES,
     Button,
     Carbon,
     Telegraph,
@@ -58,42 +51,42 @@ from . import (
     start_time,
     time_formatter,
     udB,
-    ultroid_cmd,
-    ultroid_version,
+    GOKU_USERBOT_cmd,
+    GOKU_USERBOT_version,
     updater,
 )
 
 
 def ULTPIC():
-    return inline_pic() or choice(ULTROID_IMAGES)
+    return inline_pic() or choice(GOKU_USERBOT_IMAGES)
 
 
 buttons = [
     [
-        Button.url(get_string("bot_3"), "https://github.com/TeamUltroid/Ultroid"),
-        Button.url(get_string("bot_4"), "t.me/UltroidSupportChat"),
+        Button.url(get_string("bot_3"), "https://github.com/VIPBOLTE/GOKU_USERBOT"),
+        Button.url(get_string("bot_4"), "t.me/goku_groupz"),
     ]
 ]
 
 # Will move to strings
 alive_txt = """
-The Ultroid Userbot
+The GOKU_USERBOT Userbot
 
   ◍ Version - {}
-  ◍ Py-Ultroid - {}
+  ◍ GOKU_USER- {}
   ◍ Telethon - {}
 """
 
-in_alive = "{}\n\n🌀 <b>Ultroid Version -><b> <code>{}</code>\n🌀 <b>PyUltroid -></b> <code>{}</code>\n🌀 <b>Python -></b> <code>{}</code>\n🌀 <b>Uptime -></b> <code>{}</code>\n🌀 <b>Branch -></b>[ {} ]\n\n• <b>Join @TeamUltroid</b>"
+in_alive = "{}\n\n🌀 <b>GOKU_USERBOT Version -><b> <code>{}</code>\n🌀 <b>GOKU_USER -></b> <code>{}</code>\n🌀 <b>Python -></b> <code>{}</code>\n🌀 <b>Uptime -></b> <code>{}</code>\n🌀 <b>Branch -></b>[ {} ]\n\n• <b>Join @channelz_k</b>"
 
 
 @callback("alive")
 async def alive(event):
-    text = alive_txt.format(ultroid_version, UltVer, __version__)
+    text = alive_txt.format(GOKU_USERBOT_version, UltVer, __version__)
     await event.answer(text, alert=True)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="alive( (.*)|$)",
 )
 async def lol(ult):
@@ -122,7 +115,7 @@ async def lol(ult):
         parse = "html"
         als = in_alive.format(
             header,
-            f"{ultroid_version} [{HOSTED_ON}]",
+            f"{GOKU_USERBOT_version} [{HOSTED_ON}]",
             UltVer,
             pyver(),
             uptime,
@@ -136,7 +129,7 @@ async def lol(ult):
         als = (get_string("alive_1")).format(
             header,
             OWNER_NAME,
-            f"{ultroid_version} [{HOSTED_ON}]",
+            f"{GOKU_USERBOT_version} [{HOSTED_ON}]",
             UltVer,
             uptime,
             pyver(),
@@ -180,7 +173,7 @@ async def lol(ult):
     )
 
 
-@ultroid_cmd(pattern="ping$", chats=[], type=["official", "assistant"])
+@GOKU_USERBOT_cmd(pattern="ping$", chats=[], type=["official", "assistant"])
 async def _(event):
     start = time.time()
     x = await event.eor("Pong !")
@@ -189,7 +182,7 @@ async def _(event):
     await x.edit(get_string("ping").format(end, uptime))
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="cmds$",
 )
 async def cmds(event):
@@ -199,7 +192,7 @@ async def cmds(event):
 heroku_api = Var.HEROKU_API
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="restart$",
     fullsudo=True,
 )
@@ -214,10 +207,10 @@ async def restartbt(ult):
     if len(sys.argv) > 1:
         os.execl(sys.executable, sys.executable, "main.py")
     else:
-        os.execl(sys.executable, sys.executable, "-m", "pyUltroid")
+        os.execl(sys.executable, sys.executable, "-m", "GOKU_USER")
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="shutdown$",
     fullsudo=True,
 )
@@ -225,13 +218,13 @@ async def shutdownbot(ult):
     await shutdown(ult)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="logs( (.*)|$)",
     chats=[],
 )
 async def _(event):
     opt = event.pattern_match.group(1).strip()
-    file = f"ultroid{sys.argv[-1]}.log" if len(sys.argv) > 1 else "ultroid.log"
+    file = f"GOKU_USERBOT{sys.argv[-1]}.log" if len(sys.argv) > 1 else "GOKU_USERBOT.log"
     if opt == "heroku":
         await heroku_logs(event)
     elif opt == "carbon" and Carbon:
@@ -239,16 +232,16 @@ async def _(event):
         with open(file, "r") as f:
             code = f.read()[-2500:]
         file = await Carbon(
-            file_name="ultroid-logs",
+            file_name="GOKU_USERBOT-logs",
             code=code,
             backgroundColor=choice(ATRA_COL),
         )
         if isinstance(file, dict):
             await event.eor(f"`{file}`")
             return
-        await event.reply("**Ultroid Logs.**", file=file)
+        await event.reply("**GOKU_USERBOT Logs.**", file=file)
     elif opt == "open":
-        with open("ultroid.log", "r") as f:
+        with open("GOKU_USERBOT.log", "r") as f:
             file = f.read()[-4000:]
         return await event.eor(f"`{file}`")
     else:
@@ -268,7 +261,7 @@ async def inline_alive(ult):
     rep = xx.replace(".git", f"/tree/{y}")
     kk = f"<a href={rep}>{y}</a>"
     als = in_alive.format(
-        header, f"{ultroid_version} [{HOSTED_ON}]", UltVer, pyver(), uptime, kk
+        header, f"{GOKU_USERBOT_version} [{HOSTED_ON}]", UltVer, pyver(), uptime, kk
     )
 
     if _e := udB.get_key("ALIVE_EMOJI"):
@@ -292,7 +285,7 @@ async def inline_alive(ult):
                     await builder.document(
                         pic,
                         title="Inline Alive",
-                        description="@TeamUltroid",
+                        description="@channelz_k",
                         parse_mode="html",
                         buttons=buttons,
                     )
@@ -308,7 +301,7 @@ async def inline_alive(ult):
     await ult.answer(result)
 
 
-@ultroid_cmd(pattern="update( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="update( (.*)|$)")
 async def _(e):
     xx = await e.eor(get_string("upd_1"))
     if e.pattern_match.group(1).strip() and (
@@ -318,7 +311,7 @@ async def _(e):
         await bash("git pull -f && pip3 install -r requirements.txt")
         call_back()
         await xx.edit(get_string("upd_7"))
-        os.execl(sys.executable, "python3", "-m", "pyUltroid")
+        os.execl(sys.executable, "python3", "-m", "GOKU_USER")
         # return
     m = await updater()
     branch = (Repo.init()).active_branch
@@ -338,7 +331,7 @@ async def _(e):
         )
     else:
         await xx.edit(
-            f'<code>Your BOT is </code><strong>up-to-date</strong><code> with </code><strong><a href="https://github.com/TeamUltroid/Ultroid/tree/{branch}">[{branch}]</a></strong>',
+            f'<code>Your BOT is </code><strong>up-to-date</strong><code> with </code><strong><a href="https://github.com/VIPBOLTE/GOKU_USERBOT/tree/{branch}">[{branch}]</a></strong>',
             parse_mode="html",
             link_preview=False,
         )
