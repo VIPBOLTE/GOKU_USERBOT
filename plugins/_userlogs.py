@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 import os
 import re
 
@@ -20,7 +13,7 @@ from telethon.errors.rpcerrorlist import (
 from telethon.tl.types import MessageEntityMention, MessageEntityMentionName, User
 from telethon.utils import get_display_name
 
-from pyUltroid.dB.botchat_db import tag_add, who_tag
+from GOKU_USERBOT.dB.botchat_db import tag_add, who_tag
 
 from . import (
     LOG_CHANNEL,
@@ -32,14 +25,14 @@ from . import (
     get_string,
     inline_mention,
     udB,
-    ultroid_bot,
+    GOKU_USERBOT_bot,
 )
 
 CACHE_SPAM = {}
 TAG_EDITS = {}
 
 
-@ultroid_bot.on(
+@GOKU_USERBOT_bot.on(
     events.NewMessage(
         incoming=True,
         func=lambda e: (e.mentioned),
@@ -113,7 +106,7 @@ async def all_messages_catcher(e):
 
 if udB.get_key("TAG_LOG"):
 
-    @ultroid_bot.on(events.MessageEdited(func=lambda x: not x.out))
+    @GOKU_USERBOT_bot.on(events.MessageEdited(func=lambda x: not x.out))
     async def upd_edits(event):
         x = event.sender
         if isinstance(x, User) and (x.bot or x.verified):
@@ -184,7 +177,7 @@ if udB.get_key("TAG_LOG"):
         except Exception as er:
             LOGS.exception(er)
 
-    @ultroid_bot.on(
+    @GOKU_USERBOT_bot.on(
         events.NewMessage(
             outgoing=True,
             chats=[udB.get_key("TAG_LOG")],
@@ -196,7 +189,7 @@ if udB.get_key("TAG_LOG"):
         chat, msg = who_tag(id)
         if chat and msg:
             try:
-                await ultroid_bot.send_message(chat, e.message, reply_to=msg)
+                await GOKU_USERBOT_bot.send_message(chat, e.message, reply_to=msg)
             except BaseException as er:
                 LOGS.exception(er)
 
@@ -241,7 +234,7 @@ _client = {"bot": asst, "user": ultroid_bot}
     re.compile(
         "leave_ch_(.*)",
     ),
-    from_users=[ultroid_bot.uid],
+    from_users=[GOKU_USERBOT_bot.uid],
 )
 async def leave_ch_at(event):
     cht = event.data_match.group(1).decode("UTF-8")
