@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 from . import get_help
 
 __doc__ = get_help("help_devtools")
@@ -18,7 +11,7 @@ from pprint import pprint
 
 from telethon.utils import get_display_name
 
-from pyUltroid import _ignore_eval
+from GOKU_USER import _ignore_eval
 
 from . import *
 
@@ -32,7 +25,7 @@ from random import choice
 try:
     from yaml import safe_load
 except ImportError:
-    from pyUltroid.fns.tools import safe_load
+    from GOKU_USER.fns.tools import safe_load
 try:
     from telegraph import upload_file as uf
 except ImportError:
@@ -42,7 +35,7 @@ from telethon.tl import functions
 fn = functions
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="sysinfo$",
 )
 async def _(e):
@@ -61,7 +54,7 @@ async def _(e):
     remove("neo.txt")
 
 
-@ultroid_cmd(pattern="bash", fullsudo=True, only_devs=True)
+@GOKU_USERBOT_cmd(pattern="bash", fullsudo=True, only_devs=True)
 async def _(event):
     carb, rayso, yamlf = None, None, False
     try:
@@ -196,7 +189,7 @@ def _parse_eval(value=None):
     return str(value)
 
 
-@ultroid_cmd(pattern="eval", fullsudo=True, only_devs=True)
+@GOKU_USERBOT_cmd(pattern="eval", fullsudo=True, only_devs=True)
 async def _(event):
     try:
         cmd = event.text.split(maxsplit=1)[1]
@@ -347,7 +340,7 @@ int main(){
 """
 
 
-@ultroid_cmd(pattern="cpp", only_devs=True)
+@GOKU_USERBOT_cmd(pattern="cpp", only_devs=True)
 async def doie(e):
     match = e.text.split(" ", maxsplit=1)
     try:
@@ -358,20 +351,20 @@ async def doie(e):
     if "main(" not in match:
         new_m = "".join(" " * 4 + i + "\n" for i in match.split("\n"))
         match = DUMMY_CPP.replace("!code", new_m)
-    open("cpp-ultroid.cpp", "w").write(match)
-    m = await bash("g++ -o CppUltroid cpp-ultroid.cpp")
+    open("cpp-GOKU_USERBOT.cpp", "w").write(match)
+    m = await bash("g++ -o CppGOKU_USERBOT cpp-GOKU_USERBOT.cpp")
     o_cpp = f"• **Eval-Cpp**\n`{match}`"
     if m[1]:
         o_cpp += f"\n\n**• Error :**\n`{m[1]}`"
         if len(o_cpp) > 3000:
-            os.remove("cpp-ultroid.cpp")
-            if os.path.exists("CppUltroid"):
-                os.remove("CppUltroid")
+            os.remove("cpp-GOKU_USERBOT.cpp")
+            if os.path.exists("CppGOKU_USERBOT"):
+                os.remove("CppGOKU_USERBOT")
             with BytesIO(str.encode(o_cpp)) as out_file:
                 out_file.name = "error.txt"
                 return await msg.reply(f"`{match}`", file=out_file)
         return await eor(msg, o_cpp)
-    m = await bash("./CppUltroid")
+    m = await bash("./CppGOKU_USERBOT")
     if m[0] != "":
         o_cpp += f"\n\n**• Output :**\n`{m[0]}`"
     if m[1]:
@@ -382,5 +375,5 @@ async def doie(e):
             await msg.reply(f"`{match}`", file=out_file)
     else:
         await eor(msg, o_cpp)
-    os.remove("CppUltroid")
-    os.remove("cpp-ultroid.cpp")
+    os.remove("GOKU_USERBOT")
+    os.remove("cpp-GOKU_USERBOT.cpp")
