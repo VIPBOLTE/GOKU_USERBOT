@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 from . import get_help
 
 __doc__ = get_help("help_echo")
@@ -12,12 +5,12 @@ __doc__ = get_help("help_echo")
 
 from telethon.utils import get_display_name
 
-from pyUltroid.dB.echo_db import add_echo, check_echo, list_echo, rem_echo
+from GOKU_USER.dB.echo_db import add_echo, check_echo, list_echo, rem_echo
 
-from . import inline_mention, ultroid_cmd
+from . import inline_mention, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(pattern="addecho( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="addecho( (.*)|$)")
 async def echo(e):
     r = await e.get_reply_message()
     if r:
@@ -40,7 +33,7 @@ async def echo(e):
     await e.eor(f"Activated Echo For {user}.")
 
 
-@ultroid_cmd(pattern="remecho( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="remecho( (.*)|$)")
 async def rm(e):
     r = await e.get_reply_message()
     if r:
@@ -63,7 +56,7 @@ async def rm(e):
     await e.eor("Echo not activated for this user")
 
 
-@ultroid_cmd(pattern="listecho$")
+@GOKU_USERBOT_cmd(pattern="listecho$")
 async def lstecho(e):
     if k := list_echo(e.chat_id):
         user = "**Activated Echo For Users:**\n\n"
