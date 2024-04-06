@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -24,15 +18,15 @@ import os
 from telegraph import upload_file as uf
 from telethon.utils import pack_bot_file_id
 
-from pyUltroid._misc import sudoers
-from pyUltroid.dB.snips_db import add_snip, get_snips, list_snip, rem_snip
-from pyUltroid.fns.tools import create_tl_btn, format_btn, get_msg_button
+from GOKU_USER._misc import sudoers
+from GOKU_USER.dB.snips_db import add_snip, get_snips, list_snip, rem_snip
+from GOKU_USER.fns.tools import create_tl_btn, format_btn, get_msg_button
 
-from . import events, get_string, mediainfo, udB, ultroid_bot, ultroid_cmd
+from . import events, get_string, mediainfo, udB, GOKU_USERBOT_bot, GOKU_USERBOT_cmd
 from ._inline import something
 
 
-@ultroid_cmd(pattern="addsnip( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="addsnip( (.*)|$)")
 async def an(e):
     wrd = (e.pattern_match.group(1).strip()).lower()
     wt = await e.get_reply_message()
@@ -70,10 +64,10 @@ async def an(e):
             txt, btn = get_msg_button(wt.text)
         add_snip(wrd, txt, None, btn)
     await e.eor(f"Done : snip `${wrd}` Saved.")
-    ultroid_bot.add_handler(add_snips, events.NewMessage())
+    GOKU_USERBOT_bot.add_handler(add_snips, events.NewMessage())
 
 
-@ultroid_cmd(pattern="remsnip( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="remsnip( (.*)|$)")
 async def rs(e):
     wrd = (e.pattern_match.group(1).strip()).lower()
     if not wrd:
@@ -84,7 +78,7 @@ async def rs(e):
     await e.eor(f"Done : snip `${wrd}` Removed.")
 
 
-@ultroid_cmd(pattern="listsnip")
+@GOKU_USERBOT_cmd(pattern="listsnip")
 async def lsnote(e):
     if x := list_snip():
         sd = "SNIPS Found :\n\n"
@@ -111,8 +105,8 @@ async def add_snips(e):
                 if k.get("button"):
                     btn = create_tl_btn(k["button"])
                     return await something(e, msg, media, btn, reply=None)
-                await ultroid_bot.send_message(e.chat_id, msg, file=media)
+                await GOKU_USERBOT_bot.send_message(e.chat_id, msg, file=media)
 
 
 if udB.get_key("SNIP"):
-    ultroid_bot.add_handler(add_snips, events.NewMessage())
+    GOKU_USERBOT_bot.add_handler(add_snips, events.NewMessage())
