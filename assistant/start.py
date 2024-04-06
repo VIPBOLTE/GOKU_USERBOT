@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 from datetime import datetime
 
 from pytz import timezone as tz
@@ -12,9 +5,9 @@ from telethon import Button, events
 from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
 from telethon.utils import get_display_name
 
-from pyUltroid._misc import SUDO_M, owner_and_sudos
-from pyUltroid.dB.base import KeyManager
-from pyUltroid.fns.helper import inline_mention
+from GOKU_USER._misc import SUDO_M, owner_and_sudos
+from GOKU_USER.dB.base import KeyManager
+from GOKU_USER.fns.helper import inline_mention
 from strings import get_string
 
 from . import *
@@ -29,7 +22,7 @@ if Owner_info_msg is None:
 
 **Message Forwards** - {udB.get_key("PMBOT")}
 
-**Ultroid [v{ultroid_version}](https://github.com/TeamUltroid/Ultroid), powered by @TeamUltroid**
+**GOKU_USERBOT [v{GOKU_USERBOT_version}](https://github.com/VIPBOLTE/GOKU_USERBOT), powered by @channelz_k**
 """
 
 
@@ -65,10 +58,10 @@ _start = [
 @callback("ownerinfo")
 async def own(event):
     msg = Owner_info_msg.format(
-        mention=event.sender.mention, me=inline_mention(ultroid_bot.me)
+        mention=event.sender.mention, me=inline_mention(GOKU_USERBOT_bot.me)
     )
     if custom_info:
-        msg += "\n\n• Powered by **@TeamUltroid**"
+        msg += "\n\n• Powered by **@channelz_k**"
     await event.edit(
         msg,
         buttons=[Button.inline("Close", data="closeit")],
@@ -105,7 +98,7 @@ async def ultroid(event):
             )
     if event.sender_id not in SUDO_M.fullsudos:
         ok = ""
-        me = inline_mention(ultroid_bot.me)
+        me = inline_mention(GOKU_USERBOT_bot.me)
         mention = inline_mention(event.sender)
         if args and args != "set":
             await get_stored_file(event, args)
@@ -113,7 +106,7 @@ async def ultroid(event):
             if udB.get_key("PMBOT"):
                 ok = "You can contact my master using this bot!!\n\nSend your Message, I will Deliver it To Master."
             await event.reply(
-                f"Hey there {mention}, this is Ultroid Assistant of {me}!\n\n{ok}",
+                f"Hey there {mention}, this is GOKU_USERBOT Assistant of {me}!\n\n{ok}",
                 file=udB.get_key("STARTMEDIA"),
                 buttons=[Button.inline("Info.", data="ownerinfo")]
                 if Owner_info_msg
@@ -160,7 +153,7 @@ async def ultroid(event):
 @callback("stat", owner=True)
 async def botstat(event):
     ok = len(udB.get_key("BOT_USERS") or [])
-    msg = """Ultroid Assistant - Stats
+    msg = """GOKU_USERBOT Assistant - Stats
 Total Users - {}""".format(
         ok,
     )
