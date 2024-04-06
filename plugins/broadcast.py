@@ -1,11 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
-
 from . import get_help
 
 __doc__ = get_help("help_broadcast")
@@ -15,14 +7,14 @@ import io
 
 from telethon.utils import get_display_name
 
-from pyUltroid.dB.base import KeyManager
+from GOKU_USER.dB.base import KeyManager
 
-from . import HNDLR, LOGS, eor, get_string, udB, ultroid_bot, ultroid_cmd
+from . import HNDLR, LOGS, eor, get_string, udB, GOKU_USERBOT_bot, GOKU_USERBOT_cmd
 
 KeyM = KeyManager("BROADCAST", cast=list)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="addch( (.*)|$)",
     allow_sudo=False,
 )
@@ -77,7 +69,7 @@ async def broadcast_adder(event):
     await x.delete()
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="remch( (.*)|$)",
     allow_sudo=False,
 )
@@ -98,7 +90,7 @@ async def broadcast_remover(event):
     await x.delete()
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="listchannels$",
 )
 async def list_all(event):
@@ -131,14 +123,14 @@ async def list_all(event):
         await x.edit(msg)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="forward$",
     allow_sudo=False,
 )
 async def forw(event):
     if not event.is_reply:
         return await event.eor(get_string("ex_1"))
-    ultroid_bot = event.client
+    GOKU_USERBOT_bot = event.client
     channels = KeyM.get()
     x = await event.eor("Sending...")
     if not channels:
@@ -168,12 +160,12 @@ async def forw(event):
             )
     await x.edit(f"{sent_count} messages sent with {error_count} errors.")
     if error_count > 0:
-        await ultroid_bot.send_message(
+        await GOKU_USERBOT_bot.send_message(
             udB.get_key("LOG_CHANNEL"), f"{error_count} Errors"
         )
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="broadcast( (.*)|$)",
     allow_sudo=False,
 )
@@ -194,7 +186,7 @@ async def sending(event):
             sent_count = 0
             for channel in channels:
                 try:
-                    await ultroid_bot.send_message(channel, previous_message)
+                    await GOKU_USERBOT_bot.send_message(channel, previous_message)
                     sent_count += 1
                     await x.edit(
                         f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}",
@@ -210,7 +202,7 @@ async def sending(event):
                     )
             await x.edit(f"{sent_count} messages sent with {error_count} errors.")
             if error_count > 0:
-                await ultroid_bot.send_message(
+                await GOKU_USERBOT_bot.send_message(
                     udB.get_key("LOG_CHANNEL"),
                     f"{error_count} Errors",
                 )
