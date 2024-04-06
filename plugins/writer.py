@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 """
 ✘ Commands Available -
 
@@ -23,7 +16,7 @@ from PIL import Image, ImageDraw, ImageFont
 from . import async_searcher, eod, get_string, text_set, ultroid_cmd
 
 
-@ultroid_cmd(pattern="gethtml( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="gethtml( (.*)|$)")
 async def ghtml(e):
     if txt := e.pattern_match.group(1).strip():
         link = e.text.split(maxsplit=1)[1]
@@ -35,7 +28,7 @@ async def ghtml(e):
     await e.reply(file="file.html")
 
 
-@ultroid_cmd(pattern="image( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="image( (.*)|$)")
 async def f2i(e):
     txt = e.pattern_match.group(1).strip()
     html = None
@@ -59,7 +52,7 @@ async def f2i(e):
         os.remove(html)
 
 
-@ultroid_cmd(pattern="write( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="write( (.*)|$)")
 async def writer(e):
     if e.reply_to:
         reply = await e.get_reply_message()
