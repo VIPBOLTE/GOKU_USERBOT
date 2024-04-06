@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -35,10 +29,10 @@ from telethon.tl.types import UserStatusOffline as off
 from telethon.tl.types import UserStatusOnline as onn
 from telethon.tl.types import UserStatusRecently as rec
 
-from . import inline_mention, ultroid_cmd
+from . import inline_mention, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="tag(on|off|all|bots|rec|admins|owner)( (.*)|$)",
     groups_only=True,
 )
