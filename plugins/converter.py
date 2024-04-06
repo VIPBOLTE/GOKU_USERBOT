@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 from . import get_help
 
 __doc__ = get_help("help_converter")
@@ -35,14 +28,14 @@ from . import (
     get_paste,
     get_string,
     udB,
-    ultroid_cmd,
+    GOKU_USERBOT_cmd,
     uploader,
 )
 
 opn = []
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="thumbnail$",
 )
 async def _(e):
@@ -61,7 +54,7 @@ async def _(e):
     await e.eor(get_string("cvt_6").format(nn), link_preview=False)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="rename( (.*)|$)",
 )
 async def imak(event):
@@ -116,7 +109,7 @@ conv_keys = {
 }
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="convert( (.*)|$)",
 )
 async def uconverter(event):
@@ -143,7 +136,7 @@ async def uconverter(event):
     await xx.delete()
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="doc( (.*)|$)",
 )
 async def _(event):
@@ -162,7 +155,7 @@ async def _(event):
     os.remove(input_str)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="open( (.*)|$)",
 )
 async def _(event):
