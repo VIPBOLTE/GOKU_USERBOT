@@ -1,19 +1,12 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 from . import get_help
 
 __doc__ = get_help("help_autoban")
 
 from telethon import events
 
-from pyUltroid.dB.base import KeyManager
+from GOKU_USER.dB.base import KeyManager
 
-from . import LOGS, asst, ultroid_bot, ultroid_cmd
+from . import LOGS, asst, GOKU_USERBOT_bot, GOKU_USERBOT_cmd
 
 Keym = KeyManager("DND_CHATS", cast=list)
 
@@ -32,7 +25,7 @@ async def dnd_func(event):
     await event.delete()
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="autokick (on|off)$",
     admins_only=True,
     manager=True,
@@ -55,5 +48,5 @@ async def _(event):
 
 
 if Keym.get():
-    ultroid_bot.add_handler(dnd_func, events.ChatAction(func=join_func))
+    GOKU_USERBOT_bot.add_handler(dnd_func, events.ChatAction(func=join_func))
     asst.add_handler(dnd_func, events.ChatAction(func=join_func))
