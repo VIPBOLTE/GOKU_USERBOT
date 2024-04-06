@@ -1,11 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
-
 from . import get_help
 
 __doc__ = get_help("help_core")
@@ -13,17 +5,17 @@ __doc__ = get_help("help_core")
 
 import os
 
-from pyUltroid.startup.loader import load_addons
+from GOKU_USER.startup.loader import load_addons
 
-from . import LOGS, async_searcher, eod, get_string, safeinstall, ultroid_cmd, un_plug
+from . import LOGS, async_searcher, eod, get_string, safeinstall, GOKU_USERBOT_cmd, un_plug
 
 
-@ultroid_cmd(pattern="install", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="install", fullsudo=True)
 async def install(event):
     await safeinstall(event)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern=r"unload( (.*)|$)",
 )
 async def unload(event):
@@ -46,7 +38,7 @@ async def unload(event):
         await event.eor(f"**Nᴏ Pʟᴜɢɪɴ Nᴀᴍᴇᴅ** `{shortname}`", time=3)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern=r"uninstall( (.*)|$)",
 )
 async def uninstall(event):
@@ -69,7 +61,7 @@ async def uninstall(event):
         return await event.eor(f"**Nᴏ Pʟᴜɢɪɴ Nᴀᴍᴇᴅ** `{shortname}`", time=3)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern=r"load( (.*)|$)",
     fullsudo=True,
 )
@@ -94,7 +86,7 @@ async def load(event):
         )
 
 
-@ultroid_cmd(pattern="getaddons( (.*)|$)", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="getaddons( (.*)|$)", fullsudo=True)
 async def get_the_addons_lol(event):
     thelink = event.pattern_match.group(1).strip()
     xx = await event.eor(get_string("com_1"))
