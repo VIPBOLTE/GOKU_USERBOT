@@ -1,21 +1,14 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 from . import get_help
 
 __doc__ = get_help("help_chatbot")
 
 
-from pyUltroid.fns.tools import get_chatbot_reply
+from GOKU_USER.fns.tools import get_chatbot_reply
 
-from . import LOGS, eod, get_string, inline_mention, udB, ultroid_cmd
+from . import LOGS, eod, get_string, inline_mention, udB, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(pattern="repai")
+@GOKU_USERBOT_cmd(pattern="repai")
 async def im_lonely_chat_with_me(event):
     if event.reply_to:
         message = (await event.get_reply_message()).message
@@ -28,17 +21,17 @@ async def im_lonely_chat_with_me(event):
     await event.eor(reply_)
 
 
-@ultroid_cmd(pattern="addai")
+@GOKU_USERBOT_cmd(pattern="addai")
 async def add_chatBot(event):
     await chat_bot_fn(event, type_="add")
 
 
-@ultroid_cmd(pattern="remai")
+@GOKU_USERBOT_cmd(pattern="remai")
 async def rem_chatBot(event):
     await chat_bot_fn(event, type_="remov")
 
 
-@ultroid_cmd(pattern="listai")
+@GOKU_USERBOT_cmd(pattern="listai")
 async def lister(event):
     key = udB.get_key("CHATBOT_USERS") or {}
     users = key.get(event.chat_id, [])
