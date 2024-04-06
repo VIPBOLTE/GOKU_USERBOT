@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available
 
@@ -28,10 +22,10 @@ import random
 import time
 from datetime import datetime as dt
 
-from . import HNDLR, LOGS, bash, downloader, get_string, mediainfo, ultroid_cmd
+from . import HNDLR, LOGS, bash, downloader, get_string, mediainfo, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(pattern="(bw|invert)gif$")
+@GOKU_USERBOT_cmd(pattern="(bw|invert)gif$")
 async def igif(e):
     match = e.pattern_match.group(1).strip()
     a = await e.get_reply_message()
@@ -56,7 +50,7 @@ async def igif(e):
         LOGS.info(er)
 
 
-@ultroid_cmd(pattern="rvgif$")
+@GOKU_USERBOT_cmd(pattern="rvgif$")
 async def reverse_gif(event):
     a = await event.get_reply_message()
     if not (a and a.media) and "video" not in mediainfo(a.media):
@@ -70,7 +64,7 @@ async def reverse_gif(event):
     os.remove("reversed.mp4")
 
 
-@ultroid_cmd(pattern="gif( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="gif( (.*)|$)")
 async def gifs(ult):
     get = ult.pattern_match.group(1).strip()
     xx = random.randint(0, 5)
@@ -96,7 +90,7 @@ async def gifs(ult):
     await m.delete()
 
 
-@ultroid_cmd(pattern="vtog$")
+@GOKU_USERBOT_cmd(pattern="vtog$")
 async def vtogif(e):
     a = await e.get_reply_message()
     if not (a and a.media):
