@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -12,10 +6,10 @@
 """
 import os
 
-from . import bash, get_string, mediainfo, ultroid_cmd
+from . import bash, get_string, mediainfo, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(pattern="glitch$")
+@GOKU_USERBOT_cmd(pattern="glitch$")
 async def _(e):
     try:
         import glitch_me  # ignore :pylint
