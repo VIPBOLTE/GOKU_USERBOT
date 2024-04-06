@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -15,12 +9,12 @@
 
 """
 
-from pyUltroid.dB.nsfw_db import profan_chat, rem_profan
+from GOKU_USER.dB.nsfw_db import profan_chat, rem_profan
 
-from . import get_string, ultroid_cmd
+from . import get_string, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(pattern="(add|rem)profanity$", admins_only=True)
+@GOKU_USERBOT_cmd(pattern="(add|rem)profanity$", admins_only=True)
 async def addp(e):
     cas = e.pattern_match.group(1)
     add = cas == "add"
