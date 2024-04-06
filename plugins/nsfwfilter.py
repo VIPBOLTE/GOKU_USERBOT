@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -23,12 +17,12 @@ try:
 except ImportError:
     detector = None
     LOGS.error("nsfwfilter: 'Profanitydetector' not installed!")
-from pyUltroid.dB.nsfw_db import is_nsfw, nsfw_chat, rem_nsfw
+from GOKU_USER.dB.nsfw_db import is_nsfw, nsfw_chat, rem_nsfw
 
-from . import HNDLR, async_searcher, eor, events, udB, ultroid_bot, ultroid_cmd
+from . import HNDLR, async_searcher, eor, events, udB, GOKU_USERBOT_bot, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(pattern="addnsfw( (.*)|$)", admins_only=True)
+@GOKU_USERBOT_cmd(pattern="addnsfw( (.*)|$)", admins_only=True)
 async def addnsfw(e):
     if not udB.get_key("DEEP_API"):
         return await eor(
@@ -38,11 +32,11 @@ async def addnsfw(e):
     if not action or ("ban" or "kick" or "mute") not in action:
         action = "mute"
     nsfw_chat(e.chat_id, action)
-    ultroid_bot.add_handler(nsfw_check, events.NewMessage(incoming=True))
+    GOKU_USERBOT_bot.add_handler(nsfw_check, events.NewMessage(incoming=True))
     await e.eor("Added This Chat To Nsfw Filter")
 
 
-@ultroid_cmd(pattern="remnsfw", admins_only=True)
+@GOKU_USERBOT_cmd(pattern="remnsfw", admins_only=True)
 async def remnsfw(e):
     rem_nsfw(e.chat_id)
     await e.eor("Removed This Chat from Nsfw Filter.")
@@ -98,36 +92,36 @@ async def nsfw_check(e):
                     )
                 if "mute" in action:
                     try:
-                        await ultroid_bot.edit_permissions(
+                        await GOKU_USERBOT_bot.edit_permissions(
                             chat, e.sender_id, until_date=None, send_messages=False
                         )
-                        await ultroid_bot.send_message(
+                        await GOKU_USERBOT_bot.send_message(
                             chat,
                             f"NSFW Warn 3/3 to [{e.sender.first_name}](tg://user?id={e.sender_id})\n\n**Action Taken** : {action}",
                         )
                     except BaseException:
-                        await ultroid_bot.send_message(
+                        await GOKU_USERBOT_bot.send_message(
                             chat,
                             f"NSFW Warn 3/3 to [{e.sender.first_name}](tg://user?id={e.sender_id})\n\nUnable to {action}.",
                         )
                 elif "ban" in action:
                     try:
-                        await ultroid_bot.edit_permissions(
+                        await GOKU_USERBOT_bot.edit_permissions(
                             chat, e.sender_id, view_messages=False
                         )
-                        await ultroid_bot.send_message(
+                        await GOKU_USERBOT_bot.send_message(
                             chat,
                             f"NSFW Warn 3/3 to [{e.sender.first_name}](tg://user?id={e.sender_id})\n\n**Action Taken** : {action}",
                         )
                     except BaseException:
-                        await ultroid_bot.send_message(
+                        await GOKU_USERBOT_bot.send_message(
                             chat,
                             f"NSFW Warn 3/3 to [{e.sender.first_name}](tg://user?id={e.sender_id})\n\nUnable to {action}.",
                         )
                 elif "kick" in action:
                     try:
-                        await ultroid_bot.kick_participant(chat, e.sender_id)
-                        await ultroid_bot.send_message(
+                        await GOKU_USERBOT_bot.kick_participant(chat, e.sender_id)
+                        await GOKU_USERBOT_bot.send_message(
                             chat,
                             f"NSFW Warn 3/3 to [{e.sender.first_name}](tg://user?id={e.sender_id})\n\n**Action Taken** : {action}",
                         )
@@ -146,4 +140,4 @@ async def nsfw_check(e):
 
 
 if udB.get_key("NSFW"):
-    ultroid_bot.add_handler(nsfw_check, events.NewMessage(incoming=True))
+    GOKU_USERBOT_bot.add_handler(nsfw_check, events.NewMessage(incoming=True))
