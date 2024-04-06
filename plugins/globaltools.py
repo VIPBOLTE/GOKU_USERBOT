@@ -186,7 +186,7 @@ async def _(e):
                 and (x.is_group or x.is_channel)
             ):
                 try:
-                    await ultroid_bot(
+                    await GOKU_USERBOT_bot(
                         EditAdminRequest(
                             x.id,
                             user,
@@ -200,10 +200,10 @@ async def _(e):
         await eor(ev, f"Promoted {name.first_name} in Total : {c} {key} chats.")
 
 
-@ultroid_cmd(pattern="gdemote( (.*)|$)", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="gdemote( (.*)|$)", fullsudo=True)
 async def _(e):
     x = e.pattern_match.group(1).strip()
-    ultroid_bot = e.client
+    GOKU_USERBOT_bot = e.client
     if not x:
         return await e.eor(get_string("schdl_2"), time=5)
     user = await e.get_reply_message()
@@ -228,7 +228,7 @@ async def _(e):
                 and (x.is_group or x.is_channel)
             ):
                 try:
-                    await ultroid_bot(
+                    await GOKU_USERBOT_bot(
                         EditAdminRequest(
                             x.id,
                             user.id,
@@ -271,7 +271,7 @@ async def _(e):
                 and (x.is_group or x.is_channel)
             ):
                 try:
-                    await ultroid_bot(
+                    await GOKU_USERBOT_bot(
                         EditAdminRequest(
                             x.id,
                             user,
@@ -285,7 +285,7 @@ async def _(e):
         await eor(ev, f"Demoted {name.first_name} in Total : {c} {key} chats.")
 
 
-@ultroid_cmd(pattern="ungban( (.*)|$)", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="ungban( (.*)|$)", fullsudo=True)
 async def _(e):
     xx = await e.eor("`UnGbanning...`")
     match = e.pattern_match.group(1).strip()
@@ -349,7 +349,7 @@ async def _(e):
     )
 
 
-@ultroid_cmd(pattern="gban( (.*)|$)", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="gban( (.*)|$)", fullsudo=True)
 async def _(e):
     xx = await e.eor("`Gbanning...`")
     reason = ""
@@ -430,7 +430,7 @@ async def _(e):
     await xx.edit(gb_msg)
 
 
-@ultroid_cmd(pattern="g(admin|)cast( (.*)|$)", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="g(admin|)cast( (.*)|$)", fullsudo=True)
 async def gcast(event):
     text, btn, reply = "", None, None
     if xx := event.pattern_match.group(2):
@@ -516,7 +516,7 @@ async def gcast(event):
     await kk.edit(text)
 
 
-@ultroid_cmd(pattern="gucast( (.*)|$)", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="gucast( (.*)|$)", fullsudo=True)
 async def gucast(event):
     msg, btn, reply = "", None, None
     if xx := event.pattern_match.group(1).strip():
@@ -565,7 +565,7 @@ async def gucast(event):
     await kk.edit(f"Done in {done} chats, error in {er} chat(s)")
 
 
-@ultroid_cmd(pattern="gkick( (.*)|$)", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="gkick( (.*)|$)", fullsudo=True)
 async def gkick(e):
     xx = await e.eor("`Gkicking...`")
     if e.reply_to_msg_id:
@@ -578,7 +578,7 @@ async def gkick(e):
         return await xx.edit("`Reply to some msg or add their id.`", time=5)
     name = (await e.client.get_entity(userid)).first_name
     chats = 0
-    if userid == ultroid_bot.uid:
+    if userid == GOKU_USERBOT_bot.uid:
         return await xx.eor("`I can't gkick myself.`", time=3)
     if userid in DEVLIST:
         return await xx.eor("`I can't gkick my Developers.`", time=3)
@@ -597,7 +597,7 @@ async def gkick(e):
     await xx.edit(f"`Gkicked` [{name}](tg://user?id={userid}) `in {chats} chats.`")
 
 
-@ultroid_cmd(pattern="gmute( (.*)|$)", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="gmute( (.*)|$)", fullsudo=True)
 async def _(e):
     xx = await e.eor("`Gmuting...`")
     if e.reply_to_msg_id:
@@ -632,7 +632,7 @@ async def _(e):
     await xx.edit(f"`Gmuted` {inline_mention(name)} `in {chats} chats.`")
 
 
-@ultroid_cmd(pattern="ungmute( (.*)|$)", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="ungmute( (.*)|$)", fullsudo=True)
 async def _(e):
     xx = await e.eor("`UnGmuting...`")
     if e.reply_to_msg_id:
@@ -663,7 +663,7 @@ async def _(e):
     await xx.edit(f"`Ungmuted` {inline_mention(name)} `in {chats} chats.`")
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="listgban$",
 )
 async def list_gengbanned(event):
@@ -699,7 +699,7 @@ async def list_gengbanned(event):
         await x.edit(gbanned_users, parse_mode="html")
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="gstat( (.*)|$)",
 )
 async def gstat_(e):
@@ -727,12 +727,12 @@ async def gstat_(e):
     await xx.edit(msg)
 
 
-@ultroid_cmd(pattern="gblacklist$")
+@GOKU_USERBOT_cmd(pattern="gblacklist$")
 async def blacklist_(event):
     await gblacker(event, "add")
 
 
-@ultroid_cmd(pattern="ungblacklist$")
+@GOKU_USERBOT_cmd(pattern="ungblacklist$")
 async def ungblacker(event):
     await gblacker(event, "remove")
 
