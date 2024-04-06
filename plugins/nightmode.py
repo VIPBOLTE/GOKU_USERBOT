@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -40,14 +34,14 @@ except ImportError:
 from telethon.tl.functions.messages import EditChatDefaultBannedRightsRequest
 from telethon.tl.types import ChatBannedRights
 
-from pyUltroid.dB.base import KeyManager
+from GOKU_USER.dB.base import KeyManager
 
-from . import get_string, udB, ultroid_bot, ultroid_cmd
+from . import get_string, udB, GOKU_USERBOT_bot, GOKU_USERBOT_cmd
 
 keym = KeyManager("NIGHT_CHATS", cast=list)
 
 
-@ultroid_cmd(pattern="nmtime( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="nmtime( (.*)|$)")
 async def set_time(e):
     if not e.pattern_match.group(1).strip():
         return await e.eor(get_string("nightm_1"))
@@ -62,7 +56,7 @@ async def set_time(e):
         await e.eor(get_string("nightm_1"))
 
 
-@ultroid_cmd(pattern="addnm( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="addnm( (.*)|$)")
 async def add_grp(e):
     if pat := e.pattern_match.group(1).strip():
         try:
