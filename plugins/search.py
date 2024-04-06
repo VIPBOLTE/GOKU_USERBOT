@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -38,13 +32,13 @@ except ImportError:
     cv2 = None
 from telethon.tl.types import DocumentAttributeAudio
 
-from pyUltroid.fns.misc import google_search
-from pyUltroid.fns.tools import get_google_images, saavn_search
+from GOKU_USER.fns.misc import google_search
+from GOKU_USER.fns.tools import get_google_images, saavn_search
 
-from . import LOGS, async_searcher, con, eod, fast_download, get_string, ultroid_cmd
+from . import LOGS, async_searcher, con, eod, fast_download, get_string, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="github (.*)",
 )
 async def gitsearch(event):
@@ -85,7 +79,7 @@ async def gitsearch(event):
     await event.delete()
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="google( (.*)|$)",
     manager=True,
 )
@@ -107,7 +101,7 @@ async def google(event):
     await x.eor(omk, link_preview=False)
 
 
-@ultroid_cmd(pattern="img( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="img( (.*)|$)")
 async def goimg(event):
     query = event.pattern_match.group(1).strip()
     if not query:
@@ -129,7 +123,7 @@ async def goimg(event):
     await nn.delete()
 
 
-@ultroid_cmd(pattern="reverse$")
+@GOKU_USERBOT_cmd(pattern="reverse$")
 async def reverse(event):
     reply = await event.get_reply_message()
     if not reply:
@@ -171,7 +165,7 @@ async def reverse(event):
     os.remove(file)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="saavn( (.*)|$)",
 )
 async def siesace(e):
