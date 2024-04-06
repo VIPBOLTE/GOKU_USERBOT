@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -44,9 +38,9 @@ from telethon.tl.functions.channels import EditAdminRequest
 from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 from telethon.tl.types import ChatAdminRights, User
 
-from pyUltroid.dB import DEVLIST
-from pyUltroid.dB.base import KeyManager
-from pyUltroid.dB.gban_mute_db import (
+from GOKU_USER.dB import DEVLIST
+from GOKU_USER.dB.base import KeyManager
+from GOKU_USER.dB.gban_mute_db import (
     gban,
     gmute,
     is_gbanned,
@@ -55,7 +49,7 @@ from pyUltroid.dB.gban_mute_db import (
     ungban,
     ungmute,
 )
-from pyUltroid.fns.tools import create_tl_btn, format_btn, get_msg_button
+from GOKU_USER.fns.tools import create_tl_btn, format_btn, get_msg_button
 
 from . import (
     HNDLR,
@@ -66,8 +60,8 @@ from . import (
     eor,
     get_string,
     inline_mention,
-    ultroid_bot,
-    ultroid_cmd,
+    GOKU_USERBOT_bot,
+    GOKU_USERBOT_cmd,
 )
 from ._inline import something
 
@@ -92,10 +86,10 @@ _gdemote_rights = ChatAdminRights(
 keym = KeyManager("GBLACKLISTS", cast=list)
 
 
-@ultroid_cmd(pattern="gpromote( (.*)|$)", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="gpromote( (.*)|$)", fullsudo=True)
 async def _(e):
     x = e.pattern_match.group(1).strip()
-    ultroid_bot = e.client
+    GOKU_USERBOT_bot = e.client
     if not x:
         return await e.eor(get_string("schdl_2"), time=5)
     user = await e.get_reply_message()
@@ -691,7 +685,7 @@ async def list_gengbanned(event):
             )
         await x.reply(
             file="gbanned.txt",
-            message=f"List of users GBanned by {inline_mention(ultroid_bot.me)}",
+            message=f"List of users GBanned by {inline_mention(GOKU_USERBOT_bot.me)}",
         )
         os.remove("gbanned.txt")
         await x.delete()
