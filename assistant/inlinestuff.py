@@ -169,14 +169,14 @@ async def _(e):
 async def repo(e):
     res = [
         await e.builder.article(
-            title="Ultroid Userbot",
+            title="GOKU_USERBOT Userbot",
             description="Userbot | Telethon",
             thumb=wb(ultpic, 0, "image/jpeg", []),
-            text="• **ULTROID USERBOT** •",
+            text="• **GOKU_USERBOT** •",
             buttons=SUP_BUTTONS,
         ),
     ]
-    await e.answer(res, switch_pm="Ultroid Repo.", switch_pm_param="start")
+    await e.answer(res, switch_pm="GOKU_USERBOT Repo.", switch_pm_param="start")
 
 
 @in_pattern("go", owner=True)
@@ -353,7 +353,7 @@ async def piston_run(event):
             thumb=wb(
                 "https://graph.org/file/e33c57fc5f1044547e4d8.jpg", 0, "image/jpeg", []
             ),
-            text=f'**Inline Usage**\n\n`@{asst.me.username} run python print("hello world")`\n\n[Language List](https://graph.org/Ultroid-09-01-6)',
+            text=f'**Inline Usage**\n\n`@{asst.me.username} run python print("hello world")`\n\n[Language List](https://graph.org/GOKU_USERBOT-09-01-6)',
         )
         return await event.answer([result])
     if not PISTON_LANGS:
@@ -368,7 +368,7 @@ async def piston_run(event):
             thumb=wb(
                 "https://graph.org/file/e33c57fc5f1044547e4d8.jpg", 0, "image/jpeg", []
             ),
-            text=f'**Inline Usage**\n\n`@{asst.me.username} run python print("hello world")`\n\n[Language List](https://graph.org/Ultroid-09-01-6)',
+            text=f'**Inline Usage**\n\n`@{asst.me.username} run python print("hello world")`\n\n[Language List](https://graph.org/GOKU_USERBOT-09-01-6)',
         )
         return await event.answer([result])
     output = await async_searcher(
