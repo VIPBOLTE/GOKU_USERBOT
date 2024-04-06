@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -19,12 +13,12 @@
 • `{i}ytsv <(youtube) search query>`
    Search and download video from youtube.
 """
-from pyUltroid.fns.ytdl import download_yt, get_yt_link
+from GOKU_USER.fns.ytdl import download_yt, get_yt_link
 
 from . import get_string, requests, ultroid_cmd
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="yt(a|v|sa|sv) ?(.*)",
 )
 async def download_from_youtube_(event):
