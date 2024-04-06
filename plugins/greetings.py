@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -35,7 +29,7 @@ import os
 from telegraph import upload_file as uf
 from telethon.utils import pack_bot_file_id
 
-from pyUltroid.dB.greetings_db import (
+from GOKU_USER.dB.greetings_db import (
     add_goodbye,
     add_thanks,
     add_welcome,
@@ -46,15 +40,15 @@ from pyUltroid.dB.greetings_db import (
     must_thank,
     remove_thanks,
 )
-from pyUltroid.fns.tools import create_tl_btn, format_btn, get_msg_button
+from GOKU_USER.fns.tools import create_tl_btn, format_btn, get_msg_button
 
-from . import HNDLR, eor, get_string, mediainfo, ultroid_cmd
+from . import HNDLR, eor, get_string, mediainfo, GOKU_USERBOT_cmd
 from ._inline import something
 
 Note = "\n\nNote: `{mention}`, `{group}`, `{count}`, `{name}`, `{fullname}`, `{username}`, `{userid}` can be used as formatting parameters.\n\n"
 
 
-@ultroid_cmd(pattern="setwelcome", groups_only=True)
+@GOKU_USERBOT_cmd(pattern="setwelcome", groups_only=True)
 async def setwel(event):
     x = await event.eor(get_string("com_1"))
     r = await event.get_reply_message()
@@ -98,7 +92,7 @@ async def setwel(event):
         await eor(x, get_string("grt_3"), time=5)
 
 
-@ultroid_cmd(pattern="clearwelcome$", groups_only=True)
+@GOKU_USERBOT_cmd(pattern="clearwelcome$", groups_only=True)
 async def clearwel(event):
     if not get_welcome(event.chat_id):
         return await event.eor(get_string("grt_4"), time=5)
@@ -106,7 +100,7 @@ async def clearwel(event):
     await event.eor(get_string("grt_5"), time=5)
 
 
-@ultroid_cmd(pattern="getwelcome$", groups_only=True)
+@GOKU_USERBOT_cmd(pattern="getwelcome$", groups_only=True)
 async def listwel(event):
     wel = get_welcome(event.chat_id)
     if not wel:
@@ -119,7 +113,7 @@ async def listwel(event):
     await event.delete()
 
 
-@ultroid_cmd(pattern="setgoodbye", groups_only=True)
+@GOKU_USERBOT_cmd(pattern="setgoodbye", groups_only=True)
 async def setgb(event):
     x = await event.eor(get_string("com_1"))
     r = await event.get_reply_message()
@@ -163,7 +157,7 @@ async def setgb(event):
         await eor(x, get_string("grt_7"), time=5)
 
 
-@ultroid_cmd(pattern="cleargoodbye$", groups_only=True)
+@GOKU_USERBOT_cmd(pattern="cleargoodbye$", groups_only=True)
 async def clearwgb(event):
     if not get_goodbye(event.chat_id):
         return await event.eor(get_string("grt_6"), time=5)
@@ -171,7 +165,7 @@ async def clearwgb(event):
     await event.eor("`Goodbye Note Deleted`", time=5)
 
 
-@ultroid_cmd(pattern="getgoodbye$", groups_only=True)
+@GOKU_USERBOT_cmd(pattern="getgoodbye$", groups_only=True)
 async def listgd(event):
     wel = get_goodbye(event.chat_id)
     if not wel:
@@ -185,7 +179,7 @@ async def listgd(event):
     await event.delete()
 
 
-@ultroid_cmd(pattern="thankmembers (on|off)", groups_only=True)
+@GOKU_USERBOT_cmd(pattern="thankmembers (on|off)", groups_only=True)
 async def thank_set(event):
     type_ = event.pattern_match.group(1).strip()
     if not type_ or type_ == "":
