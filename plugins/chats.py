@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 from . import get_help
 
 __doc__ = get_help("help_chats")
@@ -33,10 +27,10 @@ from telethon.tl.types import (
     UserStatusRecently,
 )
 
-from . import HNDLR, LOGS, asst, con, get_string, mediainfo, os, types, udB, ultroid_cmd
+from . import HNDLR, LOGS, asst, con, get_string, mediainfo, os, types, udB, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="delchat",
     groups_only=True,
 )
@@ -58,7 +52,7 @@ async def _(e):
     )
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="getlink( (.*)|$)",
     groups_only=True,
     manager=True,
@@ -119,7 +113,7 @@ async def _(e):
     await e.eor("`Failed to getlink!\nSeems like link is inaccessible to you...`")
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="create (b|g|c)(?: |$)(.*)",
 )
 async def _(e):
@@ -184,7 +178,7 @@ async def _(e):
 # ---------------------------------------------------------------- #
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="setgpic( (.*)|$)", admins_only=True, manager=True, require="change_info"
 )
 async def _(ult):
@@ -223,7 +217,7 @@ async def _(ult):
     os.remove(replfile)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="delgpic( (.*)|$)", admins_only=True, manager=True, require="change_info"
 )
 async def _(ult):
@@ -239,7 +233,7 @@ async def _(ult):
     return await ult.eor(text, time=5)
 
 
-@ultroid_cmd(pattern="unbanall$", manager=True, admins_only=True, require="ban_users")
+@GOKU_USERBOT_cmd(pattern="unbanall$", manager=True, admins_only=True, require="ban_users")
 async def _(event):
     xx = await event.eor("Searching Participant Lists.")
     p = 0
@@ -259,7 +253,7 @@ async def _(event):
     await xx.eor(f"{title}: {p} unbanned", time=5)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="rmusers( (.*)|$)",
     groups_only=True,
     admins_only=True,
