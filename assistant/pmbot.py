@@ -1,14 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
-# https://github.com/xditya/TeleBot/blob/master/telebot/plugins/mybot/pmbot/incoming.py
-
-# --------------------------------------- Imports -------------------------------------------- #
-
 import os
 
 from telethon.errors.rpcerrorlist import UserNotParticipantError
@@ -18,9 +7,9 @@ from telethon.tl.functions.messages import GetFullChatRequest
 from telethon.tl.types import Channel, Chat
 from telethon.utils import get_display_name
 
-from pyUltroid.dB.base import KeyManager
-from pyUltroid.dB.botchat_db import *
-from pyUltroid.fns.helper import inline_mention
+from GOKU_USER.dB.base import KeyManager
+from GOKU_USER.dB.botchat_db import *
+from GOKU_USER.fns.helper import inline_mention
 
 from . import *
 
