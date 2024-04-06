@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 from telethon.errors.rpcerrorlist import (
     BotInlineDisabledError,
     BotMethodInvalidError,
@@ -12,10 +5,10 @@ from telethon.errors.rpcerrorlist import (
 )
 from telethon.tl.custom import Button
 
-from pyUltroid.dB._core import HELP, LIST
-from pyUltroid.fns.tools import cmd_regex_replace
+from GOKU_USER.dB._core import HELP, LIST
+from GOKU_USER.fns.tools import cmd_regex_replace
 
-from . import HNDLR, LOGS, OWNER_NAME, asst, get_string, inline_pic, udB, ultroid_cmd
+from . import HNDLR, LOGS, OWNER_NAME, asst, get_string, inline_pic, udB, GOKU_USERBOT_cmd
 
 _main_help_menu = [
     [
@@ -36,7 +29,7 @@ _main_help_menu = [
 ]
 
 
-@ultroid_cmd(pattern="help( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="help( (.*)|$)")
 async def _help(ult):
     plug = ult.pattern_match.group(1).strip()
     chat = await ult.get_chat()
@@ -46,19 +39,19 @@ async def _help(ult):
                 output = f"**Plugin** - `{plug}`\n"
                 for i in HELP["Official"][plug]:
                     output += i
-                output += "\n© @TeamUltroid"
+                output += "\n© @channelz_k"
                 await ult.eor(output)
             elif HELP.get("Addons") and plug in HELP["Addons"]:
                 output = f"**Plugin** - `{plug}`\n"
                 for i in HELP["Addons"][plug]:
                     output += i
-                output += "\n© @TeamUltroid"
+                output += "\n© @channelz_k"
                 await ult.eor(output)
             elif HELP.get("VCBot") and plug in HELP["VCBot"]:
                 output = f"**Plugin** - `{plug}`\n"
                 for i in HELP["VCBot"][plug]:
                     output += i
-                output += "\n© @TeamUltroid"
+                output += "\n© @channelz_k"
                 await ult.eor(output)
             else:
                 try:
@@ -66,7 +59,7 @@ async def _help(ult):
                     for d in LIST[plug]:
                         x += HNDLR + d
                         x += "\n"
-                    x += "\n© @TeamUltroid"
+                    x += "\n© @channelz_k"
                     await ult.eor(x)
                 except BaseException:
                     file = None
@@ -101,7 +94,7 @@ async def _help(ult):
                     elif HELP.get("VCBot") and file in HELP["VCBot"]:
                         for i in HELP["VCBot"][file]:
                             output += i
-                    output += "\n© @TeamUltroid"
+                    output += "\n© @channelz_k"
                     await ult.eor(output)
         except BaseException as er:
             LOGS.exception(er)
