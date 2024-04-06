@@ -574,8 +574,8 @@ async def inline_tl(ult):
             [
                 await ult.builder.article(
                     title="How to Use?",
-                    description="Tl Searcher by Ultroid",
-                    url="https://t.me/TeamUltroid",
+                    description="Tl Searcher by GOKU_USERBOT",
+                    url="https://t.me/channelz_k",
                     text=text,
                 )
             ],
@@ -598,7 +598,7 @@ async def inline_tl(ult):
                 await ult.builder.article(
                     title=key.__name__,
                     description=tyyp,
-                    url="https://t.me/TeamUltroid",
+                    url="https://t.me/channelz_k",
                     text=text[:4000],
                 )
             )
@@ -610,12 +610,12 @@ InlinePlugin.update(
     {
         "Pʟᴀʏ Sᴛᴏʀᴇ Aᴘᴘs": "app telegram",
         "Mᴏᴅᴅᴇᴅ Aᴘᴘs": "mods minecraft",
-        "Sᴇᴀʀᴄʜ Oɴ Gᴏᴏɢʟᴇ": "go TeamUltroid",
+        "Sᴇᴀʀᴄʜ Oɴ Gᴏᴏɢʟᴇ": "go channelz_k",
         "WʜɪSᴘᴇʀ": "wspr @username Hello🎉",
         "YᴏᴜTᴜʙᴇ Dᴏᴡɴʟᴏᴀᴅᴇʀ": "yt Ed Sheeran Perfect",
         "Piston Eval": "run javascript console.log('Hello Ultroid')",
         "OʀᴀɴɢᴇFᴏx🦊": "ofox beryllium",
-        "Tᴡɪᴛᴛᴇʀ Usᴇʀ": "twitter theultroid",
+        "Tᴡɪᴛᴛᴇʀ Usᴇʀ": "twitter GOKU",
         "Fᴅʀᴏɪᴅ Sᴇᴀʀᴄʜ": "fdroid telegram",
         "Sᴀᴀᴠɴ sᴇᴀʀᴄʜ": "saavn",
         "Tʟ Sᴇᴀʀᴄʜ": "tl",
