@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -18,8 +12,8 @@ import os
 import time
 from datetime import datetime as dt
 
-from pyUltroid.fns.misc import rotate_image
-from pyUltroid.fns.tools import make_html_telegraph
+from GOKU_USER.fns.misc import rotate_image
+from GOKU_USER.fns.tools import make_html_telegraph
 
 from . import (
     LOGS,
@@ -29,7 +23,7 @@ from . import (
     get_string,
     is_url_ok,
     mediainfo,
-    ultroid_cmd,
+    GOKU_USERBOT_cmd,
 )
 
 try:
@@ -39,7 +33,7 @@ except ImportError:
     cv2 = None
 
 
-@ultroid_cmd(pattern="mediainfo( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="mediainfo( (.*)|$)")
 async def mi(e):
     r = await e.get_reply_message()
     match = e.pattern_match.group(1).strip()
@@ -109,7 +103,7 @@ async def mi(e):
         os.remove(naam)
 
 
-@ultroid_cmd(pattern="rotate( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="rotate( (.*)|$)")
 async def rotate_(ult):
     match = ult.pattern_match.group(1).strip()
     if not ult.is_reply:
