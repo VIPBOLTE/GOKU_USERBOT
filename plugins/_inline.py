@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 import re
 import time
 from datetime import datetime
@@ -15,10 +8,10 @@ from telethon import Button
 from telethon.tl.types import InputWebDocument, Message
 from telethon.utils import resolve_bot_file_id
 
-from pyUltroid._misc._assistant import callback, in_pattern
-from pyUltroid.dB._core import HELP, LIST
-from pyUltroid.fns.helper import gen_chlog, time_formatter, updater
-from pyUltroid.fns.misc import split_list
+from GOKU_USER._misc._assistant import callback, in_pattern
+from GOKU_USER.dB._core import HELP, LIST
+from GOKU_USER.fns.helper import gen_chlog, time_formatter, updater
+from GOKU_USER.fns.misc import split_list
 
 from . import (
     HNDLR,
@@ -50,8 +43,8 @@ upage = 0
 
 SUP_BUTTONS = [
     [
-        Button.url("• Repo •", url="https://github.com/TeamUltroid/Ultroid"),
-        Button.url("• Support •", url="t.me/UltroidSupportChat"),
+        Button.url("• Repo •", url="https://github.com/VIPBOLTE/GOKU_USERBOT"),
+        Button.url("• Support •", url="t.me/goku_groupz"),
     ],
 ]
 
@@ -60,10 +53,10 @@ SUP_BUTTONS = [
 
 @in_pattern(owner=True, func=lambda x: not x.text)
 async def inline_alive(o):
-    TLINK = inline_pic() or "https://graph.org/file/74d6259983e0642923fdb.jpg"
+    TLINK = inline_pic() or "https://telegra.ph/file/a0c824b3ad40e8bd86db7.jpg"
     MSG = "• **Ultroid Userbot •**"
     WEB0 = InputWebDocument(
-        "https://graph.org/file/acd4f5d61369f74c5e7a7.jpg", 0, "image/jpg", []
+        "https://telegra.ph/file/caae505048e959b8c3de3.jpg", 0, "image/jpg", []
     )
     RES = [
         await o.builder.article(
