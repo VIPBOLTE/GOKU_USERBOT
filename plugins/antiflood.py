@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 from . import get_help
 
 __doc__ = get_help("help_antiflood")
@@ -14,17 +7,17 @@ import re
 
 from telethon.events import NewMessage as NewMsg
 
-from pyUltroid.dB import DEVLIST
-from pyUltroid.dB.antiflood_db import get_flood, get_flood_limit, rem_flood, set_flood
-from pyUltroid.fns.admins import admin_check
+from GOKU_USER.dB import DEVLIST
+from GOKU_USER.dB.antiflood_db import get_flood, get_flood_limit, rem_flood, set_flood
+from GOKU_USER.fns.admins import admin_check
 
-from . import Button, Redis, asst, callback, eod, get_string, ultroid_bot, ultroid_cmd
+from . import Button, Redis, asst, callback, eod, get_string, GOKU_USERBOT_bot, GOKU_USERBOT_cmd
 
 _check_flood = {}
 
 if Redis("ANTIFLOOD"):
 
-    @ultroid_bot.on(
+    @GOKU_USERBOT_bot.on(
         NewMsg(
             chats=list(get_flood().keys()),
         ),
@@ -74,15 +67,15 @@ async def unmuting(e):
     ino = (e.data_match.group(1)).decode("UTF-8").split("_")
     user = int(ino[0])
     chat = int(ino[1])
-    user_name = (await ultroid_bot.get_entity(user)).first_name
-    chat_title = (await ultroid_bot.get_entity(chat)).title
-    await ultroid_bot.edit_permissions(chat, user, send_messages=True)
+    user_name = (await GOKU_USERBOT_bot.get_entity(user)).first_name
+    chat_title = (await GOKU_USERBOT_bot.get_entity(chat)).title
+    await GOKU_USERBOT_bot.edit_permissions(chat, user, send_messages=True)
     await e.edit(
         f"#Antiflood\n\n`Unmuted `[{user_name}](tg://user?id={user})` in {chat_title}`"
     )
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="setflood ?(\\d+)",
     admins_only=True,
 )
@@ -96,7 +89,7 @@ async def setflood(e):
         return await eod(e, get_string("antiflood_4").format(input_))
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="remflood$",
     admins_only=True,
 )
@@ -111,7 +104,7 @@ async def remove_flood(e):
     await e.eor(get_string("antiflood_2"), time=5)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="getflood$",
     admins_only=True,
 )
