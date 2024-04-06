@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -21,13 +15,13 @@
 """
 import io
 
-from pyUltroid.fns.misc import get_synonyms_or_antonyms
-from pyUltroid.fns.tools import async_searcher
+from GOKU_USER.fns.misc import get_synonyms_or_antonyms
+from GOKU_USER.fns.tools import async_searcher
 
-from . import get_string, ultroid_cmd
+from . import get_string, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(pattern="meaning( (.*)|$)", manager=True)
+@GOKU_USERBOT_cmd(pattern="meaning( (.*)|$)", manager=True)
 async def mean(event):
     wrd = event.pattern_match.group(1).strip()
     if not wrd:
@@ -64,7 +58,7 @@ async def mean(event):
         await event.eor(text)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="(syno|anto)nym",
 )
 async def mean(event):
@@ -98,7 +92,7 @@ async def mean(event):
         )
 
 
-@ultroid_cmd(pattern="ud (.*)")
+@GOKU_USERBOT_cmd(pattern="ud (.*)")
 async def _(event):
     word = event.pattern_match.group(1).strip()
     if not word:
