@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 from . import get_help
 
 __doc__ = get_help("help_channelhacks")
@@ -15,9 +9,9 @@ import io
 from telethon.errors.rpcerrorlist import FloodWaitError
 from telethon.utils import get_display_name, get_peer_id
 
-from pyUltroid.dB.base import KeyManager
+from GOKU_USER.dB.base import KeyManager
 
-from . import LOGS, asst, eor, events, get_string, udB, ultroid_bot, ultroid_cmd
+from . import LOGS, asst, eor, events, get_string, udB, GOKU_USERBOT_bot, GOKU_USERBOT_cmd
 
 ERROR = {}
 SourceM = KeyManager("CH_SOURCE", cast=list)
@@ -44,7 +38,7 @@ async def autopost_func(e):
                 await asst.send_message(udB.get_key("LOG_CHANNEL"), Error)
 
 
-@ultroid_cmd(pattern="shift (.*)")
+@GOKU_USERBOT_cmd(pattern="shift (.*)")
 async def _(e):
     x = e.pattern_match.group(1).strip()
     z = await e.eor(get_string("com_1"))
@@ -72,7 +66,7 @@ async def _(e):
     await z.edit("Done")
 
 
-@ultroid_cmd(pattern="asource (.*)")
+@GOKU_USERBOT_cmd(pattern="asource (.*)")
 async def source(e):
     if x := e.pattern_match.group(1).strip():
         try:
@@ -85,12 +79,12 @@ async def source(e):
     if not SourceM.contains(y):
         SourceM.add(y)
         await e.eor(get_string("cha_2"))
-        ultroid_bot.add_handler(autopost_func, events.NewMessage())
+        GOKU_USERBOT_bot.add_handler(autopost_func, events.NewMessage())
     else:
         await e.eor(get_string("cha_3"))
 
 
-@ultroid_cmd(pattern="dsource( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="dsource( (.*)|$)")
 async def dd(event):
     chat_id = event.pattern_match.group(1).strip()
     x = await event.eor(get_string("com_1"))
@@ -114,7 +108,7 @@ async def dd(event):
         await eor(x, "Source channel is already removed from database. ", time=3)
 
 
-@ultroid_cmd(pattern="listsource")
+@GOKU_USERBOT_cmd(pattern="listsource")
 async def list_all(event):
     x = await event.eor(get_string("com_1"))
     num = SourceM.count()
@@ -145,7 +139,7 @@ async def list_all(event):
         await x.edit(msg)
 
 
-@ultroid_cmd(pattern="adest (.*)")
+@GOKU_USERBOT_cmd(pattern="adest (.*)")
 async def destination(e):
     if x := e.pattern_match.group(1).strip():
         try:
@@ -162,7 +156,7 @@ async def destination(e):
         await e.eor("Destination channel already added")
 
 
-@ultroid_cmd(pattern="ddest( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="ddest( (.*)|$)")
 async def dd(event):
     chat_id = event.pattern_match.group(1).strip()
     x = await event.eor(get_string("com_1"))
@@ -186,7 +180,7 @@ async def dd(event):
         await eor(x, "Destination channel is already removed from database. ", time=5)
 
 
-@ultroid_cmd(pattern="listdest")
+@GOKU_USERBOT_cmd(pattern="listdest")
 async def list_all(event):
     ultroid_bot = event.client
     x = await event.eor(get_string("com_1"))
@@ -207,7 +201,7 @@ async def list_all(event):
         MSG = msg.replace("*", "").replace("`", "")
         with io.BytesIO(str.encode(MSG)) as out_file:
             out_file.name = "channels.txt"
-            await ultroid_bot.send_file(
+            await GOKU_USERBOT_bot.send_file(
                 event.chat_id,
                 out_file,
                 force_document=True,
@@ -221,4 +215,4 @@ async def list_all(event):
 
 
 if udB.get_key("AUTOPOST"):
-    ultroid_bot.add_handler(autopost_func, events.NewMessage())
+    GOKU_USERBOT_bot.add_handler(autopost_func, events.NewMessage())
