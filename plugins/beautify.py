@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 from . import get_help
 
 __doc__ = get_help("help_beautify")
@@ -15,7 +8,7 @@ import random
 
 from telethon.utils import get_display_name
 from urllib.parse import urlencode
-from . import Carbon, ultroid_cmd, get_string, inline_mention
+from . import Carbon, GOKU_USERBOT_cmd, get_string, inline_mention
 from secrets import token_hex
 
 _colorspath = "resources/colorlist.txt"
@@ -27,7 +20,7 @@ else:
     all_col = []
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="(rc|c)arbon",
 )
 async def cr_bn(event):
@@ -48,7 +41,7 @@ async def cr_bn(event):
             code = event.text.split(" ", maxsplit=1)[1]
         except IndexError:
             return await xxxx.eor(get_string("carbon_2"))
-    xx = await Carbon(code=code, file_name="ultroid_carbon", backgroundColor=col)
+    xx = await Carbon(code=code, file_name="GOKU_USERBOT_carbon", backgroundColor=col)
     if isinstance(xx, dict):
         await xxxx.edit(f"`{xx}`")
         return
@@ -59,7 +52,7 @@ async def cr_bn(event):
     )
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="ccarbon( (.*)|$)",
 )
 async def crbn(event):
@@ -103,7 +96,7 @@ RaySoTheme = [
 ]
 
 
-@ultroid_cmd(pattern="rayso")
+@GOKU_USERBOT_cmd(pattern="rayso")
 async def pass_on(ult):
     try:
         from playwright.async_api import async_playwright
