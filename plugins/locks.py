@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -15,12 +9,12 @@
 """
 from telethon.tl.functions.messages import EditChatDefaultBannedRightsRequest
 
-from pyUltroid.fns.admins import lock_unlock
+from GOKU_USER.fns.admins import lock_unlock
 
-from . import ultroid_cmd
+from . import GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="(un|)lock( (.*)|$)", admins_only=True, manager=True, require="change_info"
 )
 async def un_lock(e):
