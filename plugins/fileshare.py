@@ -1,23 +1,16 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 from . import get_help
 
 __doc__ = get_help("help_fileshare")
 
 import os
 
-from pyUltroid.dB.filestore_db import del_stored, get_stored_msg, list_all_stored_msgs
-from pyUltroid.fns.tools import get_file_link
+from GOKU_USER.dB.filestore_db import del_stored, get_stored_msg, list_all_stored_msgs
+from GOKU_USER.fns.tools import get_file_link
 
-from . import HNDLR, asst, get_string, in_pattern, udB, ultroid_bot, ultroid_cmd
+from . import HNDLR, asst, get_string, in_pattern, udB, GOKU_USERBOT_bot, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(pattern="store$")
+@GOKU_USERBOT_cmd(pattern="store$")
 async def filestoreplg(event):
     msg = await event.get_reply_message()
     if not msg:
@@ -31,7 +24,7 @@ async def filestoreplg(event):
     )
 
 
-@ultroid_cmd("delstored ?(.*)")
+@GOKU_USERBOT_cmd("delstored ?(.*)")
 async def _(event):
     match = event.pattern_match.group(1)
     if not match:
@@ -48,11 +41,11 @@ async def _(event):
             "`Message/Media of provided link was already deleted.`", time=5
         )
     del_stored(match[1])
-    await ultroid_bot.delete_messages(udB.get_key("LOG_CHANNEL"), int(msg_id))
+    await GOKU_USERBOT_bot.delete_messages(udB.get_key("LOG_CHANNEL"), int(msg_id))
     await event.eor("__Deleted__")
 
 
-@ultroid_cmd("liststored$")
+@GOKU_USERBOT_cmd("liststored$")
 async def liststored(event):
     files = list_all_stored_msgs()
     if not files:
