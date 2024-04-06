@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -14,12 +8,12 @@
 """
 from datetime import timedelta
 
-from pyUltroid.fns.admins import ban_time
+from GOKU_USER.fns.admins import ban_time
 
-from . import get_string, ultroid_cmd
+from . import get_string, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(pattern="schedule( (.*)|$)", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="schedule( (.*)|$)", fullsudo=True)
 async def _(e):
     x = e.pattern_match.group(1).strip()
     xx = await e.get_reply_message()
