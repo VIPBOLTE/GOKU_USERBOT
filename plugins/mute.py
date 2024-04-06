@@ -26,7 +26,7 @@ from telethon.utils import get_display_name
 from GOKU_USER.dB.mute_db import is_muted, mute, unmute
 from GOKU_USER.fns.admins import ban_time
 
-from . import asst, eod, get_string, inline_mention, ultroid_bot, ultroid_cmd
+from . import asst, eod, get_string, inline_mention, GOKU_USERBOT_bot, GOKU_USERBOT_cmd
 
 
 @GOKU_USERBOT_bot.on(events.NewMessage(incoming=True))
