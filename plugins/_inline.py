@@ -71,7 +71,7 @@ async def inline_alive(o):
             text=MSG,
             include_media=True,
             buttons=SUP_BUTTONS,
-            title="Ultroid Userbot",
+            title="GOKU_USERBOT Userbot",
             description="Userbot | Telethon",
             url=TLINK,
             thumb=WEB0,
@@ -82,7 +82,7 @@ async def inline_alive(o):
         RES,
         private=True,
         cache_time=300,
-        switch_pm="👥 ULTROID PORTAL",
+        switch_pm="👥 GOKU_USERBOT PORTAL",
         switch_pm_param="start",
     )
 
@@ -107,7 +107,7 @@ async def inline_handler(event):
         )
     else:
         result = await event.builder.article(
-            title="Ultroid Help Menu", text=text, buttons=_main_help_menu
+            title="GOKU_USERBOT Help Menu", text=text, buttons=_main_help_menu
         )
     await event.answer([result], private=True, cache_time=300, gallery=True)
 
@@ -195,7 +195,7 @@ async def uptd_plugin(event):
                 help_ += "\n"
     if not help_:
         help_ = f"{file} has no Detailed Help!"
-    help_ += "\n© @TeamUltroid"
+    help_ += "\n© @channelz_k"
     buttons = []
     if inline_pic():
         data = f"sndplug_{key}_{file}"
@@ -238,17 +238,17 @@ async def _(event):
     changelog_str = changelog + "\n\n" + get_string("inline_8")
     if len(changelog_str) > 1024:
         await event.edit(get_string("upd_4"))
-        with open("ultroid_updates.txt", "w+") as file:
+        with open("GOKU_USERBOT_updates.txt", "w+") as file:
             file.write(tl_chnglog)
         await event.edit(
             get_string("upd_5"),
-            file="ultroid_updates.txt",
+            file="GOKU_USERBOT_updates.txt",
             buttons=[
                 [Button.inline("• Uᴘᴅᴀᴛᴇ Nᴏᴡ •", data="updatenow")],
                 [Button.inline("« Bᴀᴄᴋ", data="ownr")],
             ],
         )
-        remove("ultroid_updates.txt")
+        remove("GOKU_USERBOT_updates.txt")
     else:
         await event.edit(
             changelog_str,
@@ -398,9 +398,9 @@ async def ibuild(e):
                     results = [
                         await builder.document(
                             _pic,
-                            title="Ultroid Op",
+                            title="GOKU_USERBOT Op",
                             text=txt,
-                            description="@TeamUltroid",
+                            description="@channelz_k",
                             buttons=btn,
                             link_preview=False,
                         )
@@ -413,10 +413,10 @@ async def ibuild(e):
                     cont = InputWebDocument(pic, 0, mime_type, [])
                 results = [
                     await builder.article(
-                        title="Ultroid Op",
+                        title="GOKU_USERBOT Op",
                         type=_type,
                         text=txt,
-                        description="@TeamUltroid",
+                        description="@channelz_k",
                         include_media=include_media,
                         buttons=btn,
                         thumb=cont,
@@ -428,7 +428,7 @@ async def ibuild(e):
         except Exception as er:
             LOGS.exception(er)
     result = [
-        await builder.article("Ultroid Op", text=txt, link_preview=False, buttons=btn)
+        await builder.article("GOKU_USERBOT Op", text=txt, link_preview=False, buttons=btn)
     ]
     await e.answer(result)
 
