@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -20,10 +14,10 @@
 """
 from telethon.tl.types import InputMediaPoll, Poll, PollAnswer
 
-from . import get_string, ultroid_cmd
+from . import get_string, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="poll( (.*)|$)",
 )
 async def uri_poll(e):
