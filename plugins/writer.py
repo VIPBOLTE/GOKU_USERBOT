@@ -13,7 +13,7 @@ import os
 from htmlwebshot import WebShot
 from PIL import Image, ImageDraw, ImageFont
 
-from . import async_searcher, eod, get_string, text_set, ultroid_cmd
+from . import async_searcher, eod, get_string, text_set, GOKU_USERBOT_cmd
 
 
 @GOKU_USERBOT_cmd(pattern="gethtml( (.*)|$)")
