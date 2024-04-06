@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available
 
@@ -30,13 +24,13 @@ import time
 
 from telethon.tl.types import Message
 
-from pyUltroid.fns.gDrive import GDriveManager
-from pyUltroid.fns.helper import time_formatter
+from GOKU_USER.fns.gDrive import GDriveManager
+from GOKU_USER.fns.helper import time_formatter
 
-from . import ULTConfig, asst, eod, eor, get_string, ultroid_cmd
+from . import ULTConfig, asst, eod, eor, get_string, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="gdown( (.*)|$)",
     fullsudo=True,
 )
@@ -56,7 +50,7 @@ async def gdown(event):
     )
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="gdlist$",
     fullsudo=True,
 )
@@ -94,7 +88,7 @@ async def files(event):
         os.remove("drive-files.txt")
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="gdul( (.*)|$)",
     fullsudo=True,
 )
@@ -171,7 +165,7 @@ async def _(event):
         await mone.edit(f"Exception occurred while uploading to gDrive {e}")
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="gdsearch( (.*)|$)",
     fullsudo=True,
 )
@@ -215,7 +209,7 @@ async def _(event):
         os.remove(f"{input_str}.txt")
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="gdfolder$",
     fullsudo=True,
 )
@@ -229,4 +223,4 @@ async def _(event):
             + GDrive._create_folder_link(GDrive.folder_id)
         )
     else:
-        await eod(event, "Set FOLDERID from your Assistant bot's Settings ")
+        await eod(event, "Set FOLDER ID from your Assistant bot's Settings ")
