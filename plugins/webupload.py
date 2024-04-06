@@ -14,12 +14,12 @@
 
 import os
 
-from pyUltroid.fns.tools import _webupload_cache
+from GOKU_USER.fns.tools import _webupload_cache
 
-from . import Button, asst, get_string, ultroid_cmd
+from . import Button, asst, get_string, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="webupload( (.*)|$)",
 )
 async def _(event):
