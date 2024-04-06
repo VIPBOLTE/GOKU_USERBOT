@@ -1,18 +1,10 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
-
 from . import get_help
 
 __doc__ = get_help("help_calculator")
 
 import re
 
-from . import Button, asst, callback, get_string, in_pattern, udB, ultroid_cmd
+from . import Button, asst, callback, get_string, in_pattern, udB, GOKU_USERBOT_cmd
 
 CALC = {}
 
@@ -43,7 +35,7 @@ lst = list(zip(tultd[::4], tultd[1::4], tultd[2::4], tultd[3::4]))
 lst.append([Button.inline("=", data="calc=")])
 
 
-@ultroid_cmd(pattern="calc")
+@GOKU_USERBOT_cmd(pattern="calc")
 async def icalc(e):
     udB.del_key("calc")
     if e.client._bot:
