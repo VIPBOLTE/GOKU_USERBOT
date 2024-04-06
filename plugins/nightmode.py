@@ -66,7 +66,7 @@ async def set_time(e):
 async def add_grp(e):
     if pat := e.pattern_match.group(1).strip():
         try:
-            keym.add((await ultroid_bot.get_entity(pat)).id)
+            keym.add((await GOKU_USERBOT_bot.get_entity(pat)).id)
             return await e.eor(f"Done, Added {pat} To Night Mode.")
         except BaseException:
             return await e.eor(get_string("nightm_5"), time=5)
@@ -74,11 +74,11 @@ async def add_grp(e):
     await e.eor(get_string("nightm_3"))
 
 
-@ultroid_cmd(pattern="remnm( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="remnm( (.*)|$)")
 async def r_em_grp(e):
     if pat := e.pattern_match.group(1).strip():
         try:
-            keym.remove((await ultroid_bot.get_entity(pat)).id)
+            keym.remove((await GOKU_USERBOT_bot.get_entity(pat)).id)
             return await e.eor(f"Done, Removed {pat} To Night Mode.")
         except BaseException:
             return await e.eor(get_string("nightm_5"), time=5)
@@ -86,13 +86,13 @@ async def r_em_grp(e):
     await e.eor(get_string("nightm_4"))
 
 
-@ultroid_cmd(pattern="listnm$")
+@GOKU_USERBOT_cmd(pattern="listnm$")
 async def rem_grp(e):
     chats = keym.get()
     name = "NightMode Groups Are-:\n\n"
     for x in chats:
         try:
-            ok = await ultroid_bot.get_entity(x)
+            ok = await GOKU_USERBOT_bot.get_entity(x)
             name += f"@{ok.username}" if ok.username else ok.title
         except BaseException:
             name += str(x)
@@ -102,7 +102,7 @@ async def rem_grp(e):
 async def open_grp():
     for chat in keym.get():
         try:
-            await ultroid_bot(
+            await GOKU_USERBOT_bot(
                 EditChatDefaultBannedRightsRequest(
                     chat,
                     banned_rights=ChatBannedRights(
@@ -117,7 +117,7 @@ async def open_grp():
                     ),
                 )
             )
-            await ultroid_bot.send_message(chat, "**NightMode Off**\n\nGroup Opened 🥳.")
+            await GOKU_USERBOT_bot.send_message(chat, "**NightMode Off**\n\nGroup Opened 🥳.")
         except Exception as er:
             LOGS.info(er)
 
@@ -128,7 +128,7 @@ async def close_grp():
         _, __, h2, m2 = eval(udB.get_key("NIGHT_TIME"))
     for chat in keym.get():
         try:
-            await ultroid_bot(
+            await GOKU_USERBOT_bot(
                 EditChatDefaultBannedRightsRequest(
                     chat,
                     banned_rights=ChatBannedRights(
