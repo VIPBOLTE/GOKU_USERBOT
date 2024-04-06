@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -19,12 +13,12 @@
 
 from telethon.tl.types import User
 
-from pyUltroid._misc import sudoers
+from GOKU_USER._misc import sudoers
 
-from . import get_string, inline_mention, udB, ultroid_bot, ultroid_cmd
+from . import get_string, inline_mention, udB, GOKU_USERBOT_bot, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(pattern="addsudo( (.*)|$)", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="addsudo( (.*)|$)", fullsudo=True)
 async def _(ult):
     inputs = ult.pattern_match.group(1).strip()
     if ult.reply_to_msg_id:
@@ -64,7 +58,7 @@ async def _(ult):
     await ult.eor(mmm, time=5)
 
 
-@ultroid_cmd(pattern="delsudo( (.*)|$)", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="delsudo( (.*)|$)", fullsudo=True)
 async def _(ult):
     inputs = ult.pattern_match.group(1).strip()
     if ult.reply_to_msg_id:
@@ -99,7 +93,7 @@ async def _(ult):
     await ult.eor(mmm, time=5)
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="listsudo$",
 )
 async def _(ult):
