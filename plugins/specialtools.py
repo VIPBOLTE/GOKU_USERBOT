@@ -143,7 +143,7 @@ async def hbd(event):
         nam = await kk.get_sender()
         name = nam.first_name
     else:
-        name = ultroid_bot.me.first_name
+        name = GOKU_USERBOT_bot.me.first_name
     zn = pytz.timezone("Asia/Kolkata")
     abhi = dt.now(zn)
     kk = match.split("/")
