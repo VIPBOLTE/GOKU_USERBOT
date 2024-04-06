@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 from . import get_help
 
 __doc__ = get_help("help_afk")
@@ -15,8 +8,8 @@ import asyncio
 from telegraph import upload_file as uf
 from telethon import events
 
-from pyUltroid.dB.afk_db import add_afk, del_afk, is_afk
-from pyUltroid.dB.base import KeyManager
+from GOKU_USER.dB.afk_db import add_afk, del_afk, is_afk
+from GOKU_USER.dB.base import KeyManager
 
 from . import (
     LOG_CHANNEL,
@@ -26,8 +19,8 @@ from . import (
     get_string,
     mediainfo,
     udB,
-    ultroid_bot,
-    ultroid_cmd,
+    GOKU_USERBOT_bot,
+    GOKU_USERBOT_cmd,
 )
 
 old_afk_msg = []
@@ -35,7 +28,7 @@ old_afk_msg = []
 is_approved = KeyManager("PMPERMIT", cast=list).contains
 
 
-@ultroid_cmd(pattern="afk( (.*)|$)", owner_only=True)
+@GOKU_USERBOT_cmd(pattern="afk( (.*)|$)", owner_only=True)
 async def set_afk(event):
     if event.client._bot or is_afk():
         return
@@ -56,8 +49,8 @@ async def set_afk(event):
                 media = reply.file.id
     await event.eor("`Done`", time=2)
     add_afk(text, media_type, media)
-    ultroid_bot.add_handler(remove_afk, events.NewMessage(outgoing=True))
-    ultroid_bot.add_handler(
+    GOKU_USERBOT_bot.add_handler(remove_afk, events.NewMessage(outgoing=True))
+    GOKU_USERBOT_bot.add_handler(
         on_afk,
         events.NewMessage(
             incoming=True, func=lambda e: bool(e.mentioned or e.is_private)
@@ -66,20 +59,20 @@ async def set_afk(event):
     msg1, msg2 = None, None
     if text and media:
         if "sticker" in media_type:
-            msg1 = await ultroid_bot.send_file(event.chat_id, file=media)
-            msg2 = await ultroid_bot.send_message(
+            msg1 = await GOKU_USERBOT_bot.send_file(event.chat_id, file=media)
+            msg2 = await GOKU_USERBOT_bot.send_message(
                 event.chat_id, get_string("afk_5").format(text)
             )
         else:
-            msg1 = await ultroid_bot.send_message(
+            msg1 = await GOKU_USERBOT_bot.send_message(
                 event.chat_id, get_string("afk_5").format(text), file=media
             )
     elif media:
         if "sticker" in media_type:
-            msg1 = await ultroid_bot.send_file(event.chat_id, file=media)
-            msg2 = await ultroid_bot.send_message(event.chat_id, get_string("afk_6"))
+            msg1 = await GOKU_USERBOT_bot.send_file(event.chat_id, file=media)
+            msg2 = await GOKU_USERBOT_bot.send_message(event.chat_id, get_string("afk_6"))
         else:
-            msg1 = await ultroid_bot.send_message(
+            msg1 = await GOKU_USERBOT_bot.send_message(
                 event.chat_id, get_string("afk_6"), file=media
             )
     elif text:
@@ -157,8 +150,8 @@ async def on_afk(event):
 
 
 if udB.get_key("AFK_DB"):
-    ultroid_bot.add_handler(remove_afk, events.NewMessage(outgoing=True))
-    ultroid_bot.add_handler(
+    GOKU_USERBOT.add_handler(remove_afk, events.NewMessage(outgoing=True))
+    GOKU_USERBOT_bot.add_handler(
         on_afk,
         events.NewMessage(
             incoming=True, func=lambda e: bool(e.mentioned or e.is_private)
