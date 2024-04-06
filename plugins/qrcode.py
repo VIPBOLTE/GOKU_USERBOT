@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -18,7 +12,7 @@
 """
 import os
 
-from pyUltroid import ULTConfig
+from GOKU_USER import ULTConfig
 
 try:
     import cv2
@@ -29,10 +23,10 @@ import qrcode
 from PIL import Image
 from telethon.tl.types import MessageMediaDocument as doc
 
-from . import check_filename, get_string, ultroid_bot, ultroid_cmd
+from . import check_filename, get_string, GOKU_USERBOT_bot, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(pattern="qrcode( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="qrcode( (.*)|$)")
 async def cd(e):
     reply = await e.get_reply_message()
     msg = e.pattern_match.group(1).strip()
@@ -43,7 +37,7 @@ async def cd(e):
     default, cimg = ULTConfig.thumb, None
     if reply and (reply.sticker or reply.photo):
         cimg = await reply.download_media()
-    elif ultroid_bot.me.photo and not ultroid_bot.me.photo.has_video:
+    elif GOKU_USERBOT_bot.me.photo and not GOKU_USERBOT_bot.me.photo.has_video:
         cimg = (await e.client.get_profile_photos(ultroid_bot.uid, limit=1))[0]
 
     kk = await e.eor(get_string("com_1"))
@@ -65,7 +59,7 @@ async def cd(e):
         os.remove(cimg)
 
 
-@ultroid_cmd(pattern="addqr( (.*)|$)")
+@GOKU_USERBOT_cmd(pattern="addqr( (.*)|$)")
 async def qrwater(e):
     msg = e.pattern_match.group(1).strip()
     r = await e.get_reply_message()
@@ -88,7 +82,7 @@ async def qrwater(e):
     os.remove(dl)
 
 
-@ultroid_cmd(pattern="qrdecode$")
+@GOKU_USERBOT_cmd(pattern="qrdecode$")
 async def decod(e):
     r = await e.get_reply_message()
     if not (r and r.media):
