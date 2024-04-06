@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -22,10 +16,10 @@
 
 import os
 
-from . import eor, get_string, udB, ultroid_cmd
+from . import eor, get_string, udB, GOKU_USERBOT_cmd
 
 
-@ultroid_cmd(pattern="get($| (.*))", fullsudo=True)
+@GOKU_USERBOT_cmd(pattern="get($| (.*))", fullsudo=True)
 async def get_var(event):
     try:
         opt = event.text.split(maxsplit=2)[1]
