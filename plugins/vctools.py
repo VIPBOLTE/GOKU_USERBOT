@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available -
 
@@ -28,7 +22,7 @@ from telethon.tl.functions.phone import EditGroupCallTitleRequest as settitle
 from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
-from . import get_string, ultroid_cmd
+from . import get_string, GOKU_USERBOT_cmd
 
 
 async def get_call(event):
@@ -42,7 +36,7 @@ def user_list(l, n):
         yield l[i : i + n]
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="stopvc$",
     admins_only=True,
     groups_only=True,
@@ -55,7 +49,7 @@ async def _(e):
         await e.eor(f"`{ex}`")
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="vcinvite$",
     groups_only=True,
 )
@@ -76,7 +70,7 @@ async def _(e):
     await ok.edit(get_string("vct_5").format(z))
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="startvc$",
     admins_only=True,
     groups_only=True,
@@ -89,7 +83,7 @@ async def _(e):
         await e.eor(f"`{ex}`")
 
 
-@ultroid_cmd(
+@GOKU_USERBOT_cmd(
     pattern="vctitle(?: |$)(.*)",
     admins_only=True,
     groups_only=True,
