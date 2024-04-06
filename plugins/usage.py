@@ -1,9 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 """
 ✘ Commands Available
 
@@ -21,7 +15,7 @@ import math
 import shutil
 from random import choice
 
-from pyUltroid.fns import some_random_headers
+from GOKU_USER.fns import some_random_headers
 
 from . import (
     HOSTED_ON,
@@ -31,7 +25,7 @@ from . import (
     get_string,
     humanbytes,
     udB,
-    ultroid_cmd,
+    GOKU_USERBOT_cmd,
 )
 
 HEROKU_API = None
@@ -51,7 +45,7 @@ if HOSTED_ON == "heroku":
         LOGS.exception(er)
 
 
-@ultroid_cmd(pattern="usage")
+@GOKU_USERBOT_cmd(pattern="usage")
 async def usage_finder(event):
     x = await event.eor(get_string("com_1"))
     try:
