@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
-
 from .. import *  # ignore: pylint
 
 # https://github.com/bisoncorps/search-engine-parser/blob/ede1355a1f63398d9217b8e502fbd6c52b53bf09/search_engine_parser/core/utils.py#L11
