@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
-
 import base64
 import os
 import random
@@ -14,7 +7,7 @@ from logging import WARNING
 from random import choice, randrange, shuffle
 from traceback import format_exc
 
-from pyUltroid.exceptions import DependencyMissingError
+from GOKU_USER.exceptions import DependencyMissingError
 
 try:
     from aiohttp import ContentTypeError
