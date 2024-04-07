@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
-
 import asyncio
 import math
 import os
@@ -101,11 +94,11 @@ def inline_mention(user, custom=None, html=False):
 
 
 def un_plug(shortname):
-    from .. import asst, ultroid_bot
+    from .. import asst, GOKU_USERBOT_bot
 
     try:
         all_func = LOADED[shortname]
-        for client in [ultroid_bot, asst]:
+        for client in [GOKU_USERBOT_bot, asst]:
             for x, _ in client.list_event_handlers():
                 if x in all_func:
                     client.remove_event_handler(x)
@@ -114,7 +107,7 @@ def un_plug(shortname):
         ADDONS.remove(shortname)
     except (ValueError, KeyError):
         name = f"addons.{shortname}"
-        for client in [ultroid_bot, asst]:
+        for client in [GOKU_USERBOT_bot, asst]:
             for i in reversed(range(len(client._event_builders))):
                 ev, cb = client._event_builders[i]
                 if cb.__module__ == name:
@@ -169,20 +162,20 @@ if run_as_module:
             output = "**Plugin** - `{}`\n".format(plug)
             for i in HELP[plug]:
                 output += i
-            output += "\n© @TeamUltroid"
-            await eod(ok, f"✓ `Ultroid - Installed`: `{plug}` ✓\n\n{output}")
+            output += "\n© @channelz_k"
+            await eod(ok, f"✓ `GOKU_USERBOT - Installed`: `{plug}` ✓\n\n{output}")
         elif plug in CMD_HELP:
             output = f"Plugin Name-{plug}\n\n✘ Commands Available-\n\n"
             output += str(CMD_HELP[plug])
-            await eod(ok, f"✓ `Ultroid - Installed`: `{plug}` ✓\n\n{output}")
+            await eod(ok, f"✓ `GOKU_USERBOT - Installed`: `{plug}` ✓\n\n{output}")
         else:
             try:
                 x = f"Plugin Name-{plug}\n\n✘ Commands Available-\n\n"
                 for d in LIST[plug]:
                     x += HNDLR + d + "\n"
-                await eod(ok, f"✓ `Ultroid - Installed`: `{plug}` ✓\n\n`{x}`")
+                await eod(ok, f"✓ `GOKU_USERBOT - Installed`: `{plug}` ✓\n\n`{x}`")
             except BaseException:
-                await eod(ok, f"✓ `Ultroid - Installed`: `{plug}` ✓")
+                await eod(ok, f"✓ `GOKU_USERBOT - Installed`: `{plug}` ✓")
 
     async def heroku_logs(event):
         """
@@ -204,16 +197,16 @@ if run_as_module:
             )
         await xx.edit("`Downloading Logs...`")
         ok = app.get_log()
-        with open("ultroid-heroku.log", "w") as log:
+        with open("GOKU_USERBOT-heroku.log", "w") as log:
             log.write(ok)
         await event.client.send_file(
             event.chat_id,
-            file="ultroid-heroku.log",
+            file="GOKU_USERBOT-heroku.log",
             thumb=ULTConfig.thumb,
-            caption="**Ultroid Heroku Logs.**",
+            caption="**GOKU_USERBOT Heroku Logs.**",
         )
 
-        os.remove("ultroid-heroku.log")
+        os.remove("GOKU_USERBOT-heroku.log")
         await xx.delete()
 
     async def def_logs(ult, file):
@@ -237,8 +230,8 @@ if run_as_module:
         )
         ac_br = repo.active_branch.name
         ch_log = tldr_log = ""
-        ch = f"<b>Ultroid {ultroid_version} updates for <a href={UPSTREAM_REPO_URL}/tree/{ac_br}>[{ac_br}]</a>:</b>"
-        ch_tl = f"Ultroid {ultroid_version} updates for {ac_br}:"
+        ch = f"<b>GOKU_USERBOT {GOKU_USERBOT_version} updates for <a href={UPSTREAM_REPO_URL}/tree/{ac_br}>[{ac_br}]</a>:</b>"
+        ch_tl = f"GOKU_USERBOT {GOKU_USERBOT_version} updates for {ac_br}:"
         d_form = "%d/%m/%y || %H:%M"
         for c in repo.iter_commits(diff):
             ch_log += f"\n\n💬 <b>{c.count()}</b> 🗓 <b>[{c.committed_datetime.strftime(d_form)}]</b>\n<b><a href={UPSTREAM_REPO_URL.rstrip('/')}/commit/{c}>[{c.summary}]</a></b> 👨‍💻 <code>{c.author}</code>"
@@ -306,7 +299,6 @@ async def updater():
 
 
 # ----------------Fast Upload/Download----------------
-# @1danish_00 @new-dev0 @buddhhu
 
 
 async def uploader(file, name, taime, event, msg):
@@ -348,7 +340,6 @@ async def downloader(filename, file, event, taime, msg):
 
 
 # ~~~~~~~~~~~~~~~Async Searcher~~~~~~~~~~~~~~~
-# @buddhhu
 
 
 async def async_searcher(
@@ -391,7 +382,7 @@ async def async_searcher(
 
 
 # ~~~~~~~~~~~~~~~~~~~~DDL Downloader~~~~~~~~~~~~~~~~~~~~
-# @buddhhu @new-dev0
+
 
 
 async def download_file(link, name, validate=False):
@@ -561,7 +552,6 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
 
 
 # ------------------System\\Heroku stuff----------------
-# @xditya @sppidy @techierror
 
 
 async def restart(ult=None):
@@ -581,13 +571,13 @@ async def restart(ult=None):
             LOGS.exception(er)
     else:
         if len(sys.argv) == 1:
-            os.execl(sys.executable, sys.executable, "-m", "pyUltroid")
+            os.execl(sys.executable, sys.executable, "-m", "GOKU_USER")
         else:
             os.execl(
                 sys.executable,
                 sys.executable,
                 "-m",
-                "pyUltroid",
+                "GOKU_USER",
                 sys.argv[1],
                 sys.argv[2],
                 sys.argv[3],
