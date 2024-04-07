@@ -1,34 +1,22 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
-#
-#   To Install Other USERBOTs plugin Support
-#
-#   ULTROID Don't Need This Stuffs
-#
-
 import inspect
 import os
 from pathlib import Path
 
 from telethon import events, types
 
-from pyUltroid._misc._decorators import compile_pattern, ultroid_cmd
-from pyUltroid._misc._wrappers import eod, eor
+from GOKU_USER._misc._decorators import compile_pattern, GOKU_USERBOT_cmd
+from GOKU_USER._misc._wrappers import eod, eor
 
 from .. import *
 from ..dB._core import LIST
 from . import CMD_HELP, SUDO_M  # ignore: pylint
 
-ALIVE_NAME = ultroid_bot.me.first_name
+ALIVE_NAME = GOKU_USERBOT_bot.me.first_name
 BOTLOG_CHATID = BOTLOG = udB.get_key("LOG_CHANNEL")
 
 
-bot = borg = catub = friday = ultroid_bot
-catub.cat_cmd = ultroid_cmd
+bot = borg = catub = friday = GOKU_USERBOT_bot
+catub.cat_cmd = GOKU_USERBOT_cmd
 
 black_list_chats = udB.get_key("BLACKLIST_CHATS")
 
@@ -50,8 +38,8 @@ def admin_cmd(pattern=None, command=None, **args):
 
 
 friday_on_cmd = admin_cmd
-command = ultroid_cmd
-register = ultroid_cmd
+command = GOKU_USERBOT_cmd
+register = GOKU_USERBOT_cmd
 
 
 def sudo_cmd(allow_sudo=True, pattern=None, command=None, **args):
