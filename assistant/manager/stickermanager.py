@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 import random
 
 from telethon import errors
@@ -18,8 +11,8 @@ from telethon.tl.types import InputStickerSetItem as SetItem
 from telethon.tl.types import InputStickerSetShortName, User
 from telethon.utils import get_display_name, get_input_document
 
-from pyUltroid.fns.misc import Quotly
-from pyUltroid.fns.tools import TgConverter
+from GOKU_USER.fns.misc import Quotly
+from GOKU_USER.fns.tools import TgConverter
 
 from . import LOGS, asst, asst_cmd, udB
 
