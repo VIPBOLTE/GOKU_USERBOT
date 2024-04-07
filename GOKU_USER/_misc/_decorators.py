@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
-
 import asyncio
 import inspect
 import re
@@ -34,7 +27,7 @@ from telethon.errors.rpcerrorlist import (
 from telethon.events import MessageEdited, NewMessage
 from telethon.utils import get_display_name
 
-from pyUltroid.exceptions import DependencyMissingError
+from GOKU_USER.exceptions import DependencyMissingError
 from strings import get_string
 
 from .. import *
@@ -66,8 +59,8 @@ def compile_pattern(data, hndlr):
     return re.compile("\\" + hndlr + data)
 
 
-def ultroid_cmd(
-    pattern=None, manager=False, ultroid_bot=ultroid_bot, asst=asst, **kwargs
+def GOKU_USERBOT_cmd(
+    pattern=None, manager=False, GOKU_USERBOT_bot=GOKU_USERBOT_bot, asst=asst, **kwargs
 ):
     owner_only = kwargs.get("owner_only", False)
     groups_only = kwargs.get("groups_only", False)
@@ -151,7 +144,7 @@ def ultroid_cmd(
                         Button.url("Bot", "t.me/SessionGeneratorBot?start="),
                         Button.url(
                             "Repl",
-                            "https://replit.com/@TheUltroid/UltroidStringSession",
+                            "https://replit.com/@VIPBOLTE/GOKU_USERBOTStringSession",
                         ),
                     ],
                 )
@@ -164,12 +157,12 @@ def ultroid_cmd(
                 LOGS.exception(e)
                 date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
                 naam = get_display_name(chat)
-                ftext = "**Ultroid Client Error:** `Forward this to` @UltroidSupportChat\n\n"
-                ftext += "**Py-Ultroid Version:** `" + str(pyver)
-                ftext += "`\n**Ultroid Version:** `" + str(ult_ver)
+                ftext = "**GOKU_USERBOT Client Error:** `Forward this to` @goku_groupz\n\n"
+                ftext += "**GOKU_USER Version:** `" + str(pyver)
+                ftext += "`\n**GOKU_USERBOT Version:** `" + str(ult_ver)
                 ftext += "`\n**Telethon Version:** `" + str(telever)
                 ftext += f"`\n**Hosted At:** `{HOSTED_ON}`\n\n"
-                ftext += "--------START ULTROID CRASH LOG--------"
+                ftext += "--------START GOKU_USERBOT CRASH LOG--------"
                 ftext += "\n**Date:** `" + date
                 ftext += "`\n**Group:** `" + str(ult.chat_id) + "` " + str(naam)
                 ftext += "\n**Sender ID:** `" + str(ult.sender_id)
@@ -180,7 +173,7 @@ def ultroid_cmd(
                 ftext += str(format_exc())
                 ftext += "`\n\n**Error text:**`\n"
                 ftext += str(sys.exc_info()[1])
-                ftext += "`\n\n--------END ULTROID CRASH LOG--------"
+                ftext += "`\n\n--------END GOKU_USERBOT CRASH LOG--------"
                 ftext += "\n\n\n**Last 5 commits:**`\n"
 
                 stdout, stderr = await bash('git log --pretty=format:"%an: %s" -5')
@@ -218,7 +211,7 @@ def ultroid_cmd(
         if _add_new:
             if pattern:
                 cmd = compile_pattern(pattern, SUDO_HNDLR)
-            ultroid_bot.add_event_handler(
+            GOKU_USERBOT_bot.add_event_handler(
                 wrapp,
                 NewMessage(
                     pattern=cmd,
@@ -231,7 +224,7 @@ def ultroid_cmd(
             )
         if pattern:
             cmd = compile_pattern(pattern, HNDLR)
-        ultroid_bot.add_event_handler(
+        GOKU_USERBOT_bot.add_event_handler(
             wrapp,
             NewMessage(
                 outgoing=True if _add_new else None,
@@ -247,7 +240,7 @@ def ultroid_cmd(
             def func_(x):
                 return not x.via_bot_id and not (x.is_channel and x.chat.broadcast)
 
-            ultroid_bot.add_event_handler(
+            GOKU_USERBOT_bot.add_event_handler(
                 wrapp,
                 MessageEdited(
                     pattern=cmd,
