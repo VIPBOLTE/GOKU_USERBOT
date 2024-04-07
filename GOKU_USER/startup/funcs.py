@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
-
 import asyncio
 import os
 import random
@@ -53,7 +46,7 @@ async def autoupdate_local_database():
 
     global db_url
     db_url = (
-        udB.get_key("TGDB_URL") or Var.TGDB_URL or ultroid_bot._cache.get("TGDB_URL")
+        udB.get_key("TGDB_URL") or Var.TGDB_URL or GOKU_USERBOT_bot._cache.get("TGDB_URL")
     )
     if db_url:
         _split = db_url.split("/")
@@ -145,30 +138,30 @@ async def startup_stuff():
             LOGS.debug(er)
         except BaseException:
             LOGS.critical(
-                "Incorrect Timezone ,\nCheck Available Timezone From Here https://graph.org/Ultroid-06-18-2\nSo Time is Default UTC"
+                "Incorrect Timezone ,\nCheck Available Timezone From Here https://graph.org/GOKU_USERBOT-06-18-2\nSo Time is Default UTC"
             )
             os.environ["TZ"] = "UTC"
             time.tzset()
 
 
 async def autobot():
-    from .. import udB, ultroid_bot
+    from .. import udB, GOKU_USERBOT_bot
 
     if udB.get_key("BOT_TOKEN"):
         return
-    await ultroid_bot.start()
+    await GOKU_USERBOT_bot.start()
     LOGS.info("MAKING A TELEGRAM BOT FOR YOU AT @BotFather, Kindly Wait")
-    who = ultroid_bot.me
+    who = GOKU_USERBOT_bot.me
     name = who.first_name + "'s Bot"
     if who.username:
         username = who.username + "_bot"
     else:
-        username = "ultroid_" + (str(who.id))[5:] + "_bot"
+        username = "GOKU_USERBOT_" + (str(who.id))[5:] + "_bot"
     bf = "@BotFather"
-    await ultroid_bot(UnblockRequest(bf))
-    await ultroid_bot.send_message(bf, "/cancel")
+    await GOKU_USERBOT_bot(UnblockRequest(bf))
+    await GOKU_USERBOT_bot.send_message(bf, "/cancel")
     await asyncio.sleep(1)
-    await ultroid_bot.send_message(bf, "/newbot")
+    await GOKU_USERBOT_bot.send_message(bf, "/newbot")
     await asyncio.sleep(1)
     isdone = (await ultroid_bot.get_messages(bf, limit=1))[0].text
     if isdone.startswith("That I cannot do.") or "20 bots" in isdone:
@@ -178,13 +171,13 @@ async def autobot():
         import sys
 
         sys.exit(1)
-    await ultroid_bot.send_message(bf, name)
+    await GOKU_USERBOT_bot.send_message(bf, name)
     await asyncio.sleep(1)
-    isdone = (await ultroid_bot.get_messages(bf, limit=1))[0].text
+    isdone = (await GOKU_USERBOT_bot.get_messages(bf, limit=1))[0].text
     if not isdone.startswith("Good."):
-        await ultroid_bot.send_message(bf, "My Assistant Bot")
+        await GOKU_USERBOT_bot.send_message(bf, "My Assistant Bot")
         await asyncio.sleep(1)
-        isdone = (await ultroid_bot.get_messages(bf, limit=1))[0].text
+        isdone = (await GOKU_USERBOT_bot.get_messages(bf, limit=1))[0].text
         if not isdone.startswith("Good."):
             LOGS.critical(
                 "Please make a Bot from @BotFather and add it's token in BOT_TOKEN, as an env var and restart me."
@@ -192,16 +185,16 @@ async def autobot():
             import sys
 
             sys.exit(1)
-    await ultroid_bot.send_message(bf, username)
+    await GOKU_USERBOT_bot.send_message(bf, username)
     await asyncio.sleep(1)
     isdone = (await ultroid_bot.get_messages(bf, limit=1))[0].text
-    await ultroid_bot.send_read_acknowledge("botfather")
+    await GOKU_USERBOT_bot.send_read_acknowledge("botfather")
     if isdone.startswith("Sorry,"):
         ran = randint(1, 100)
-        username = "ultroid_" + (str(who.id))[6:] + str(ran) + "_bot"
-        await ultroid_bot.send_message(bf, username)
+        username = "GOKU_USERBOT_" + (str(who.id))[6:] + str(ran) + "_bot"
+        await GOKU_USERBOT_bot.send_message(bf, username)
         await asyncio.sleep(1)
-        isdone = (await ultroid_bot.get_messages(bf, limit=1))[0].text
+        isdone = (await GOKU_USERBOT_bot.get_messages(bf, limit=1))[0].text
     if isdone.startswith("Done!"):
         token = isdone.split("`")[1]
         udB.set_key("BOT_TOKEN", token)
@@ -220,7 +213,7 @@ async def autobot():
 
 
 async def autopilot():
-    from .. import asst, udB, ultroid_bot
+    from .. import asst, udB, GOKU_USERBOT_bot
 
     channel = udB.get_key("LOG_CHANNEL")
     new_channel = None
@@ -234,21 +227,21 @@ async def autopilot():
     if not channel:
 
         async def _save(exc):
-            udB._cache["LOG_CHANNEL"] = ultroid_bot.me.id
+            udB._cache["LOG_CHANNEL"] = GOKU_USERBOT_bot.me.id
             await asst.send_message(
-                ultroid_bot.me.id, f"Failed to Create Log Channel due to {exc}.."
+                GOKU_USERBOT_bot.me.id, f"Failed to Create Log Channel due to {exc}.."
             )
 
-        if ultroid_bot._bot:
+        if GOKU_USERBOT_bot._bot:
             msg_ = "'LOG_CHANNEL' not found! Add it in order to use 'BOTMODE'"
             LOGS.error(msg_)
             return await _save(msg_)
         LOGS.info("Creating a Log Channel for You!")
         try:
-            r = await ultroid_bot(
+            r = await GOKU_USERBOT_bot(
                 CreateChannelRequest(
-                    title="My Ultroid Logs",
-                    about="My Ultroid Log Group\n\n Join @TeamUltroid",
+                    title="My GOKU_USERBOT Logs",
+                    about="My GOKU_USERBOT Log Group\n\n Join @TeamUltroid",
                     megagroup=True,
                 ),
             )
@@ -270,10 +263,10 @@ async def autopilot():
         udB.set_key("LOG_CHANNEL", channel)
     assistant = True
     try:
-        await ultroid_bot.get_permissions(int(channel), asst.me.username)
+        await GOKU_USERBOT_bot.get_permissions(int(channel), asst.me.username)
     except UserNotParticipantError:
         try:
-            await ultroid_bot(InviteToChannelRequest(int(channel), [asst.me.username]))
+            await GOKU_USERBOT_bot(InviteToChannelRequest(int(channel), [asst.me.username]))
         except BaseException as er:
             LOGS.info("Error while Adding Assistant to Log Channel")
             LOGS.exception(er)
@@ -316,9 +309,9 @@ async def autopilot():
         photo, _ = await download_file(
             "https://graph.org/file/27c6812becf6f376cbb10.jpg", "channelphoto.jpg"
         )
-        ll = await ultroid_bot.upload_file(photo)
+        ll = await GOKU_USERBOT_bot.upload_file(photo)
         try:
-            await ultroid_bot(
+            await GOKU_USERBOT_bot(
                 EditPhotoRequest(int(channel), InputChatUploadedPhoto(ll))
             )
         except BaseException as er:
@@ -330,7 +323,7 @@ async def autopilot():
 
 
 async def customize():
-    from .. import asst, udB, ultroid_bot
+    from .. import asst, udB, GOKU_USERBOT_bot
 
     rem = None
     try:
@@ -339,10 +332,10 @@ async def customize():
             return
         LOGS.info("Customising Ur Assistant Bot in @BOTFATHER")
         UL = f"@{asst.me.username}"
-        if not ultroid_bot.me.username:
-            sir = ultroid_bot.me.first_name
+        if not GOKU_USERBOT_bot.me.username:
+            sir = GOKU_USERBOT_bot.me.first_name
         else:
-            sir = f"@{ultroid_bot.me.username}"
+            sir = f"@{GOKU_USERBOT_bot.me.username}"
         file = random.choice(
             [
                 "https://graph.org/file/92cd6dbd34b0d1d73a0da.jpg",
@@ -357,33 +350,33 @@ async def customize():
             chat_id, "**Auto Customisation** Started on @Botfather"
         )
         await asyncio.sleep(1)
-        await ultroid_bot.send_message("botfather", "/cancel")
+        await GOKU_USERBOT_bot.send_message("botfather", "/cancel")
         await asyncio.sleep(1)
-        await ultroid_bot.send_message("botfather", "/setuserpic")
+        await GOKU_USERBOT_bot.send_message("botfather", "/setuserpic")
         await asyncio.sleep(1)
-        isdone = (await ultroid_bot.get_messages("botfather", limit=1))[0].text
+        isdone = (await GOKU_USERBOT_bot.get_messages("botfather", limit=1))[0].text
         if isdone.startswith("Invalid bot"):
             LOGS.info("Error while trying to customise assistant, skipping...")
             return
-        await ultroid_bot.send_message("botfather", UL)
+        await GOKU_USERBOT_bot.send_message("botfather", UL)
         await asyncio.sleep(1)
-        await ultroid_bot.send_file("botfather", file)
+        await GOKU_USERBOT_bot.send_file("botfather", file)
         await asyncio.sleep(2)
-        await ultroid_bot.send_message("botfather", "/setabouttext")
+        await GOKU_USERBOT_bot.send_message("botfather", "/setabouttext")
         await asyncio.sleep(1)
-        await ultroid_bot.send_message("botfather", UL)
+        await GOKU_USERBOT_bot.send_message("botfather", UL)
         await asyncio.sleep(1)
-        await ultroid_bot.send_message(
+        await GOKU_USERBOT_bot.send_message(
             "botfather", f"✨ Hello ✨!! I'm Assistant Bot of {sir}"
         )
         await asyncio.sleep(2)
-        await ultroid_bot.send_message("botfather", "/setdescription")
+        await GOKU_USERBOT_bot.send_message("botfather", "/setdescription")
         await asyncio.sleep(1)
-        await ultroid_bot.send_message("botfather", UL)
+        await GOKU_USERBOT_bot.send_message("botfather", UL)
         await asyncio.sleep(1)
-        await ultroid_bot.send_message(
+        await GOKU_USERBOT_bot.send_message(
             "botfather",
-            f"✨ Powerful Ultroid Assistant Bot ✨\n✨ Master ~ {sir} ✨\n\n✨ Powered By ~ @TeamUltroid ✨",
+            f"✨ Powerful GOKU_USERBOT Assistant Bot ✨\n✨ Master ~ {sir} ✨\n\n✨ Powered By ~ @channelz_k ✨",
         )
         await asyncio.sleep(2)
         await msg.edit("Completed **Auto Customisation** at @BotFather.")
@@ -395,7 +388,7 @@ async def customize():
 
 
 async def plug(plugin_channels):
-    from .. import ultroid_bot
+    from .. import GOKU_USERBOT_bot
     from .utils import load_addons
 
     if ultroid_bot._bot:
@@ -407,12 +400,12 @@ async def plug(plugin_channels):
         os.mkdir("addons")
     if not os.path.exists("addons/__init__.py"):
         with open("addons/__init__.py", "w") as f:
-            f.write("from plugins import *\n\nbot = ultroid_bot")
+            f.write("from plugins import *\n\nbot = GOKU_USERBOT_bot")
     LOGS.info("• Loading Plugins from Plugin Channel(s) •")
     for chat in plugin_channels:
         LOGS.info(f"{'•'*4} {chat}")
         try:
-            async for x in ultroid_bot.iter_messages(
+            async for x in GOKU_USERBOT_bot.iter_messages(
                 chat, search=".py", filter=InputMessagesFilterDocument, wait_time=10
             ):
                 plugin = "addons/" + x.file.name.replace("_", "-").replace("|", "-")
@@ -442,7 +435,7 @@ async def fetch_ann():
     chat_id = udB.get_key("LOG_CHANNEL")
     try:
         updts = await async_searcher(
-            "https://ultroid-api.vercel.app/announcements", post=True, re_json=True
+            "https://GOKU_USERBOT-api.vercel.app/announcements", post=True, re_json=True
         )
         for upt in updts:
             key = list(upt.keys())[0]
@@ -468,23 +461,23 @@ async def fetch_ann():
 
 
 async def ready():
-    from .. import asst, udB, ultroid_bot
+    from .. import asst, udB, GOKU_USERBOT_bot
 
     chat_id = udB.get_key("LOG_CHANNEL")
     spam_sent = None
     if not udB.get_key("INIT_DEPLOY"):  # Detailed Message at Initial Deploy
-        MSG = """🎇 **Thanks for Deploying Ultroid Userbot!**
+        MSG = """🎇 **Thanks for Deploying GOKU_USERBOT!**
 • Here, are the Some Basic stuff from, where you can Know, about its Usage."""
         PHOTO = "https://graph.org/file/54a917cc9dbb94733ea5f.jpg"
         BTTS = Button.inline("• Click to Start •", "initft_2")
         udB.set_key("INIT_DEPLOY", "Done")
     else:
-        MSG = f"**Ultroid has been deployed!**\n➖➖➖➖➖➖➖➖➖➖\n**UserMode**: {inline_mention(ultroid_bot.me)}\n**Assistant**: @{asst.me.username}\n➖➖➖➖➖➖➖➖➖➖\n**Support**: @TeamUltroid\n➖➖➖➖➖➖➖➖➖➖"
+        MSG = f"**GOKU_USERBOT has been deployed!**\n➖➖➖➖➖➖➖➖➖➖\n**UserMode**: {inline_mention(GOKU_USERBOT_bot.me)}\n**Assistant**: @{asst.me.username}\n➖➖➖➖➖➖➖➖➖➖\n**Support**: @channelz_k\n➖➖➖➖➖➖➖➖➖➖"
         BTTS, PHOTO = None, None
         prev_spam = udB.get_key("LAST_UPDATE_LOG_SPAM")
         if prev_spam:
             try:
-                await ultroid_bot.delete_messages(chat_id, int(prev_spam))
+                await GOKU_USERBOT_bot.delete_messages(chat_id, int(prev_spam))
             except Exception as E:
                 LOGS.info("Error while Deleting Previous Update Message :" + str(E))
         if await updater():
@@ -501,7 +494,7 @@ async def ready():
     except Exception as el:
         LOGS.info(el)
         try:
-            spam_sent = await ultroid_bot.send_message(chat_id, MSG)
+            spam_sent = await GOKU_USERBOT_bot.send_message(chat_id, MSG)
         except Exception as ef:
             LOGS.exception(ef)
     if spam_sent and not spam_sent.media:
@@ -513,11 +506,11 @@ async def WasItRestart(udb):
     key = udb.get_key("_RESTART")
     if not key:
         return
-    from .. import asst, ultroid_bot
+    from .. import asst, GOKU_USERBOT_bot
 
     try:
         data = key.split("_")
-        who = asst if data[0] == "bot" else ultroid_bot
+        who = asst if data[0] == "bot" else GOKU_USERBOT_bot
         await who.edit_message(
             int(data[1]), int(data[2]), "__Restarted Successfully.__"
         )
@@ -549,11 +542,11 @@ def _version_changes(udb):
             udb.set_key(_, new_)
 
 
-async def enable_inline(ultroid_bot, username):
+async def enable_inline(GOKU_USERBOT_bot, username):
     bf = "BotFather"
-    await ultroid_bot.send_message(bf, "/setinline")
+    await GOKU_USERBOT_bot.send_message(bf, "/setinline")
     await asyncio.sleep(1)
-    await ultroid_bot.send_message(bf, f"@{username}")
+    await GOKU_USERBOT_bot.send_message(bf, f"@{username}")
     await asyncio.sleep(1)
-    await ultroid_bot.send_message(bf, "Search")
-    await ultroid_bot.send_read_acknowledge(bf)
+    await GOKU_USERBOT_bot.send_message(bf, "Search")
+    await GOKU_USERBOT_bot.send_read_acknowledge(bf)
