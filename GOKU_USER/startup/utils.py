@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
-
 from importlib import util
 from sys import modules
 
@@ -32,12 +25,12 @@ def load_addons(plugin_name):
     base_name = plugin_name.split("/")[-1].split("\\")[-1].replace(".py", "")
     if base_name.startswith("__"):
         return
-    from pyUltroid import fns
+    from GOKU_USER import fns
 
-    from .. import HNDLR, LOGS, asst, udB, ultroid_bot
+    from .. import HNDLR, LOGS, asst, udB, GOKU_USERBOT_bot
     from .._misc import _supporter as config
     from .._misc._assistant import asst_cmd, callback, in_pattern
-    from .._misc._decorators import ultroid_cmd
+    from .._misc._decorators import GOKU_USERBOT_cmd
     from .._misc._supporter import Config, admin_cmd, sudo_cmd
     from .._misc._wrappers import eod, eor
     from ..configs import Var
@@ -48,19 +41,19 @@ def load_addons(plugin_name):
     mod = util.module_from_spec(spec)
     for path in configPaths:
         modules[path] = config
-    modules["pyUltroid.functions"] = fns
+    modules["GOKU_USER.functions"] = fns
     mod.LOG_CHANNEL = udB.get_key("LOG_CHANNEL")
     mod.udB = udB
     mod.asst = asst
     mod.tgbot = asst
-    mod.ultroid_bot = ultroid_bot
-    mod.ub = ultroid_bot
-    mod.bot = ultroid_bot
-    mod.ultroid = ultroid_bot
-    mod.borg = ultroid_bot
-    mod.telebot = ultroid_bot
-    mod.jarvis = ultroid_bot
-    mod.friday = ultroid_bot
+    mod.GOKU_USERBOT_bot = GOKU_USERBOT_bot
+    mod.ub = GOKU_USERBOT_bot
+    mod.bot = GOKU_USERBOT_bot
+    mod.GOKU_USERBOT = GOKU_USERBOT_bot
+    mod.borg = GOKU_USERBOT_bot
+    mod.telebot = GOKU_USERBOT_bot
+    mod.jarvis = GOKU_USERBOT_bot
+    mod.friday = GOKU_USERBOT_bot
     mod.eod = eod
     mod.edit_delete = eod
     mod.LOGS = LOGS
@@ -74,7 +67,7 @@ def load_addons(plugin_name):
     mod.eor = eor
     mod.edit_or_reply = eor
     mod.asst_cmd = asst_cmd
-    mod.ultroid_cmd = ultroid_cmd
+    mod.GOKU_USERBOT_cmd = GOKU_USERBOT_cmd
     mod.on_cmd = ultroid_cmd
     mod.callback = callback
     mod.Redis = udB.get_key
