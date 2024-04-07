@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
-
 import base64
 import ipaddress
 import struct
@@ -15,7 +8,7 @@ from telethon.sessions.string import _STRUCT_PREFORMAT, CURRENT_VERSION, StringS
 
 from ..configs import Var
 from . import *
-from .BaseClient import UltroidClient
+from .BaseClient import GOKU_USERBOTClient
 
 _PYRO_FORM = {351: ">B?256sI?", 356: ">B?256sQ?", 362: ">BI?256sQ?"}
 
@@ -73,14 +66,14 @@ def validate_session(session, logger=LOGS, _exit=True):
         sys.exit()
 
 
-def vc_connection(udB, ultroid_bot):
+def vc_connection(udB, GOKU_USERBOT_bot):
     from strings import get_string
 
     VC_SESSION = Var.VC_SESSION or udB.get_key("VC_SESSION")
     if VC_SESSION and VC_SESSION != Var.SESSION:
         LOGS.info("Starting up VcClient.")
         try:
-            return UltroidClient(
+            return GOKU_USERBOTClient(
                 validate_session(VC_SESSION, _exit=False),
                 log_attempt=False,
                 exit_on_error=False,
@@ -91,4 +84,4 @@ def vc_connection(udB, ultroid_bot):
         except Exception as er:
             LOGS.info("While creating Client for VC.")
             LOGS.exception(er)
-    return ultroid_bot
+    return GOKU_USERBOT_bot
