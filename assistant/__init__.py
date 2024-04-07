@@ -1,23 +1,16 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 from telethon import Button, custom
 
 from plugins import ATRA_COL, InlinePlugin
-from pyUltroid import *
-from pyUltroid import _ult_cache
-from pyUltroid._misc import owner_and_sudos
-from pyUltroid._misc._assistant import asst_cmd, callback, in_pattern
-from pyUltroid.fns.helper import *
-from pyUltroid.fns.tools import get_stored_file
+from GOKU_USER import *
+from GOKU_USER import _ult_cache
+from GOKU_USER._misc import owner_and_sudos
+from GOKU_USER._misc._assistant import asst_cmd, callback, in_pattern
+from GOKU_USER.fns.helper import *
+from GOKU_USER.fns.tools import get_stored_file
 from strings import get_languages, get_string
 
-OWNER_NAME = ultroid_bot.full_name
-OWNER_ID = ultroid_bot.uid
+OWNER_NAME = GOKU_USERBOT_bot.full_name
+OWNER_ID = GOKU_USERBOT_bot.uid
 
 AST_PLUGINS = {}
 
