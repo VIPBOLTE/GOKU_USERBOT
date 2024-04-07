@@ -102,7 +102,7 @@ class GDriveManager:
         media_body = MediaFileUpload(path, mimetype=mime_type, resumable=True)
         body = {
             "title": filename,
-            "description": "Uploaded using Ultroid Userbot",
+            "description": "Uploaded using GOKU_USERBOT",
             "mimeType": mime_type,
         }
         if folder_id:
