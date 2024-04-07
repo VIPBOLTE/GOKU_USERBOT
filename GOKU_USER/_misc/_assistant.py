@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
-
 import inspect
 import re
 from traceback import format_exc
@@ -14,17 +7,17 @@ from telethon.errors import QueryIdInvalidError
 from telethon.events import CallbackQuery, InlineQuery, NewMessage
 from telethon.tl.types import InputWebDocument
 
-from .. import LOGS, asst, udB, ultroid_bot
+from .. import LOGS, asst, udB, GOKU_USERBOT_bot
 from ..fns.admins import admin_check
 from . import append_or_update, owner_and_sudos
 
-OWNER = ultroid_bot.full_name
+OWNER = GOKU_USERBOT_bot.full_name
 
 MSG = f"""
-**Ultroid - UserBot**
+**GOKU_USERBOT**
 ➖➖➖➖➖➖➖➖➖➖
-**Owner**: [{OWNER}](tg://user?id={ultroid_bot.uid})
-**Support**: @TeamUltroid
+**Owner**: [{OWNER}](tg://user?id={GOKU_USERBOT_bot.uid})
+**Support**: @channelz_k
 ➖➖➖➖➖➖➖➖➖➖
 """
 
@@ -32,9 +25,9 @@ IN_BTTS = [
     [
         Button.url(
             "Repository",
-            url="https://github.com/TeamUltroid/Ultroid",
+            url="https://github.com/VIPBOLTE/GOKU_USERBOT",
         ),
-        Button.url("Support", url="https://t.me/UltroidSupportChat"),
+        Button.url("Support", url="https://t.me/goku_groupz"),
     ]
 ]
 
@@ -70,7 +63,7 @@ def callback(data=None, from_users=[], admins=False, owner=False, **kwargs):
     """Assistant's callback decorator"""
     if "me" in from_users:
         from_users.remove("me")
-        from_users.append(ultroid_bot.uid)
+        from_users.append(GOKU_USERBOT_bot.uid)
 
     def ultr(func):
         async def wrapper(event):
@@ -98,9 +91,9 @@ def in_pattern(pattern=None, owner=False, **kwargs):
             if owner and event.sender_id not in owner_and_sudos():
                 res = [
                     await event.builder.article(
-                        title="Ultroid Userbot",
-                        url="https://t.me/TeamUltroid",
-                        description="(c) TeamUltroid",
+                        title="GOKU_USERBOT",
+                        url="https://t.me/channelz_k",
+                        description="(c) channelz_k",
                         text=MSG,
                         thumb=InputWebDocument(
                             "https://graph.org/file/dde85d441fa051a0d7d1d.jpg",
@@ -134,7 +127,7 @@ def in_pattern(pattern=None, owner=False, **kwargs):
                                 title="Unhandled Exception has Occured!",
                                 text=error_text(),
                                 buttons=Button.url(
-                                    "Report", "https://t.me/UltroidSupportChat"
+                                    "Report", "https://t.me/goku_groupz"
                                 ),
                             )
                         ]
