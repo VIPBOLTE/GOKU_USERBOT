@@ -15,7 +15,7 @@ test*
 *.log
 target/npmlist.json
 package-lock.json
-ultroid.json
+GOKU_USERBOT.json
 resources/extras/thumbnail.jpg
 
 # Directories
