@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
-
 import inspect
 import sys
 import time
@@ -23,7 +16,7 @@ from ..configs import Var
 from . import *
 
 
-class UltroidClient(TelegramClient):
+class GOKU_USERBOTClient(TelegramClient):
     def __init__(
         self,
         session,
@@ -131,8 +124,8 @@ class UltroidClient(TelegramClient):
                         except FileNotFoundError:
                             pass
                     return files["raw_file"], time.time() - start_time
-        from pyUltroid.fns.FastTelethon import upload_file
-        from pyUltroid.fns.helper import progress
+        from GOKU_USER.fns.FastTelethon import upload_file
+        from GOKU_USER.fns.helper import progress
 
         raw_file = None
         while not raw_file:
@@ -181,8 +174,8 @@ class UltroidClient(TelegramClient):
 
         from telethon.tl.types import DocumentAttributeFilename
 
-        from pyUltroid.fns.FastTelethon import download_file
-        from pyUltroid.fns.helper import progress
+        from GOKU_USER.fns.FastTelethon import download_file
+        from GOKU_USER.fns.helper import progress
 
         start_time = time.time()
         # Auto-generate Filename
