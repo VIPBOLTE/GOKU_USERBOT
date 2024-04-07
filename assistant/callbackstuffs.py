@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 import ast
 import asyncio
 import re
@@ -17,7 +10,7 @@ from random import choice
 from bs4 import BeautifulSoup as bs
 
 try:
-    from pyUltroid.fns.gDrive import GDriveManager
+    from GOKU_USER.fns.gDrive import GDriveManager
 except ImportError:
     GDriveManager = None
 from telegraph import upload_file as upl
@@ -25,9 +18,9 @@ from telethon import Button, events
 from telethon.tl.types import MessageMediaWebPage
 from telethon.utils import get_peer_id
 
-from pyUltroid.fns.helper import fast_download, progress
-from pyUltroid.fns.tools import Carbon, async_searcher, get_paste, telegraph_client
-from pyUltroid.startup.loader import Loader
+from GOKU_USER.fns.helper import fast_download, progress
+from GOKU_USER.fns.tools import Carbon, async_searcher, get_paste, telegraph_client
+from GOKU_USER.startup.loader import Loader
 
 from . import *
 
