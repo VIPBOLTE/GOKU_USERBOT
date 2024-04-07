@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
-
 import os
 import sys
 
@@ -23,11 +16,11 @@ if run_as_module:
 
     from .configs import Var
     from .startup import *
-    from .startup._database import UltroidDB
-    from .startup.BaseClient import UltroidClient
+    from .startup._database import GOKU_USERBOTDB
+    from .startup.BaseClient import GOKU_USERBOTClient
     from .startup.connections import validate_session, vc_connection
     from .startup.funcs import _version_changes, autobot, enable_inline, update_envs
-    from .version import ultroid_version
+    from .version import GOKU_USERBOT_version
 
     if not os.path.exists("./plugins"):
         LOGS.error(
@@ -39,7 +32,7 @@ if run_as_module:
     _ult_cache = {}
     _ignore_eval = []
 
-    udB = UltroidDB()
+    udB = GOKU_USERBOTDB()
     update_envs()
 
     LOGS.info(f"Connecting to {udB.name}...")
@@ -66,32 +59,32 @@ if run_as_module:
 
             sys.exit()
     else:
-        ultroid_bot = UltroidClient(
+        GOKU_USERBOT_bot = GOKU_USERBOTClient(
             validate_session(Var.SESSION, LOGS),
             udB=udB,
-            app_version=ultroid_version,
-            device_model="Ultroid",
+            app_version=GOKU_USERBOT_version,
+            device_model="GOKU_USERBOT",
         )
-        ultroid_bot.run_in_loop(autobot())
+        GOKU_USERBOT_bot.run_in_loop(autobot())
 
     if USER_MODE:
-        asst = ultroid_bot
+        asst = GOKU_USERBOT_bot
     else:
-        asst = UltroidClient("asst", bot_token=udB.get_key("BOT_TOKEN"), udB=udB)
+        asst = GOKU_USERBOTClient("asst", bot_token=udB.get_key("BOT_TOKEN"), udB=udB)
 
     if BOT_MODE:
-        ultroid_bot = asst
+        GOKU_USERBOT_bot = asst
         if udB.get_key("OWNER_ID"):
             try:
-                ultroid_bot.me = ultroid_bot.run_in_loop(
-                    ultroid_bot.get_entity(udB.get_key("OWNER_ID"))
+                GOKU_USERBOT_bot.me = GOKU_USERBOT_bot.run_in_loop(
+                    GOKU_USERBOT_bot.get_entity(udB.get_key("OWNER_ID"))
                 )
             except Exception as er:
                 LOGS.exception(er)
     elif not asst.me.bot_inline_placeholder and asst._bot:
-        ultroid_bot.run_in_loop(enable_inline(ultroid_bot, asst.me.username))
+        GOKU_USERBOT_bot.run_in_loop(enable_inline(GOKU_USERBOT_bot, asst.me.username))
 
-    vcClient = vc_connection(udB, ultroid_bot)
+    vcClient = vc_connection(udB, GOKU_USERBOT_bot)
 
     _version_changes(udB)
 
@@ -99,10 +92,10 @@ if run_as_module:
     DUAL_HNDLR = udB.get_key("DUAL_HNDLR") or "/"
     SUDO_HNDLR = udB.get_key("SUDO_HNDLR") or HNDLR
 else:
-    print("pyUltroid 2022 © TeamUltroid")
+    print("GOKU_USER 2022 © channelz_k")
 
     from logging import getLogger
 
-    LOGS = getLogger("pyUltroid")
+    LOGS = getLogger("GOKU_USER")
 
-    ultroid_bot = asst = udB = vcClient = None
+    GOKU_USERBOT_bot = asst = udB = vcClient = None
