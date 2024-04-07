@@ -1,13 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
-
-
-# -----------------Random Stuff--------------
-
 import math
 
 from telethon.tl import functions, types
@@ -15,7 +5,7 @@ from telethon.tl import functions, types
 from .. import LOGS
 
 # -----------
-# @buddhhu
+
 
 
 async def get_uinfo(e):
