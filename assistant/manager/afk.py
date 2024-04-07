@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 from datetime import datetime as dt
 
 from telethon.events import NewMessage
@@ -16,7 +9,7 @@ from telethon.tl.types import (
 )
 from telethon.utils import get_display_name
 
-from pyUltroid.fns.helper import inline_mention, time_formatter
+from GOKU_USER.fns.helper import inline_mention, time_formatter
 
 from . import asst, asst_cmd
 
