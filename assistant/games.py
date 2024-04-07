@@ -1,10 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2021-2023 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
 """
 • `{i}akinator` | `/akinator`
    Start akinator game from Userbot/Assistant
@@ -35,9 +28,9 @@ from telethon.errors.rpcerrorlist import (
 from telethon.events import Raw
 from telethon.tl.types import InputMediaPoll, Poll, PollAnswer, UpdateMessagePollVote
 
-from pyUltroid._misc._decorators import ultroid_cmd
-from pyUltroid.fns.helper import inline_mention
-from pyUltroid.fns.tools import async_searcher
+from GOKU_USER._misc._decorators import GOKU_USERBOT_cmd
+from GOKU_USER.fns.helper import inline_mention
+from GOKU_USER.fns.tools import async_searcher
 
 from . import *
 
@@ -140,7 +133,7 @@ async def eiagx(e):
 # ----------------------- Main Command ------------------- #
 
 GIMAGES = [
-    "https://graph.org/file/1c51015bae5205a65fd69.jpg",
+    "https://telegra.ph/file/45b7aeedeeaed886456b4.jpg",
     "https://imgwhale.xyz/3xyr322l64j9590",
 ]
 
