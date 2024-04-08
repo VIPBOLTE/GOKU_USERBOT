@@ -1,25 +1,25 @@
 <p align="center">
-  <img src="./resources/extras/logo_readme.jpg" alt="TeamUltroid Logo">
+  <img src="./resources/extras/logo_readme.jpg" alt="GOKU_USERBOT Logo">
 </p>
 <h1 align="center">
-  <b>Ultroid - UserBot</b>
+  <b>GOKU_USERBOT</b>
 </h1>
 
 <b>A stable pluggable Telegram userbot + Voice & Video Call music bot, based on Telethon.</b>
 
-[![](https://img.shields.io/badge/Ultroid-v0.8-crimson)](#)
-[![Stars](https://img.shields.io/github/stars/TeamUltroid/Ultroid?style=flat-square&color=yellow)](https://github.com/TeamUltroid/Ultroid/stargazers)
-[![Forks](https://img.shields.io/github/forks/TeamUltroid/Ultroid?style=flat-square&color=orange)](https://github.com/TeamUltroid/Ultroid/fork)
-[![Size](https://img.shields.io/github/repo-size/TeamUltroid/Ultroid?style=flat-square&color=green)](https://github.com/TeamUltroid/Ultroid/)   
+[![](https://img.shields.io/badge/GOKU_USERBOT-v0.8-crimson)](#)
+[![Stars](https://img.shields.io/github/stars/VIPBOLTE/GOKU_USERBOT?style=flat-square&color=yellow)](https://github.com/VIPBOLTE/GOKU_USERBOT/stargazers)
+[![Forks](https://img.shields.io/github/forks/VIPBOLTE/GOKU_USERBOT?style=flat-square&color=orange)](https://github.com/VIPBOLTE/GOKU_USERBOT/fork)
+[![Size](https://img.shields.io/github/repo-size/VIPBOLTE/GOKU_USERBOT?style=flat-square&color=green)](https://github.com/VIPBOLTE/GOKU_USERBOT/)   
 [![Python](https://img.shields.io/badge/Python-v3.10.3-blue)](https://www.python.org/)
-[![CodeFactor](https://www.codefactor.io/repository/github/teamultroid/ultroid/badge/main)](https://www.codefactor.io/repository/github/teamultroid/ultroid/overview/main)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/TeamUltroid/Ultroid/graphs/commit-activity)
-[![Docker Pulls](https://img.shields.io/docker/pulls/theteamultroid/ultroid?style=flat-square)](https://img.shields.io/docker/pulls/theteamultroid/ultroid?style=flat-square)   
-[![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/TeamUltroid/Ultroid)
-[![Contributors](https://img.shields.io/github/contributors/TeamUltroid/Ultroid?style=flat-square&color=green)](https://github.com/TeamUltroid/Ultroid/graphs/contributors)
+[![CodeFactor](https://www.codefactor.io/repository/github/VIPBOLTE/GOKU_USERBOT/badge/main)](https://www.codefactor.io/repository/github/VIPBOLTE/GOKU_USERBOT/overview/main)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/VIPBOLTE/GOKU_USERBOT/graphs/commit-activity)
+[![Docker Pulls](https://img.shields.io/docker/pulls/VIPBOLTE/GOKU_USERBOT?style=flat-square)](https://img.shields.io/docker/pulls/VIPBOLTE/GOKU_USERBOT?style=flat-square)   
+[![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/VIPBOLTE/GOKU_USERBOT)
+[![Contributors](https://img.shields.io/github/contributors/VIPBOLTE/GOKU_USERBOT?style=flat-square&color=green)](https://github.com/VIPBOLTE/GOKU_USERBOT/graphs/contributors)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
-[![License](https://img.shields.io/badge/License-AGPL-blue)](https://github.com/TeamUltroid/Ultroid/blob/main/LICENSE)   
-[![Sparkline](https://stars.medv.io/Teamultroid/Ultroid.svg)](https://stars.medv.io/TeamUltroid/Ultroid)
+[![License](https://img.shields.io/badge/License-AGPL-blue)](https://github.com/VIPBOLTE/GOKU_USERBOT/blob/main/LICENSE)   
+[![Sparkline](https://stars.medv.io/VIPBOLTE/GOKU_USERBOT.svg)](https://stars.medv.io/VIPBOLTE/GOKU_USERBOT)
 ----
 
 # Deploy
@@ -28,7 +28,7 @@
 - [Local Machine](#deploy-locally)
 
 # Documentation 
-[![Documentation](https://img.shields.io/badge/Documentation-Ultroid-blue)](http://ultroid.tech/)
+[![Documentation](https://img.shields.io/badge/Documentation-GOKU_USERBOT-blue)](http://ultroid.tech/)
 
 # Tutorial 
 - Full Tutorial - [![Full Tutorial](https://img.shields.io/badge/Watch%20Now-blue)](https://www.youtube.com/watch?v=0wAV7pUzhDQ)
@@ -44,12 +44,12 @@ Get the [Necessary Variables](#Necessary-Variables) and then click the button be
 ## Deploy to Okteto
 Get the [Necessary Variables](#Necessary-Variables) and then click the button below!
 
-[![Develop on Okteto](https://okteto.com/develop-okteto.svg)](https://cloud.okteto.com/deploy?repository=https://github.com/TeamUltroid/Ultroid)
+[![Develop on Okteto](https://okteto.com/develop-okteto.svg)](https://cloud.okteto.com/deploy?repository=https://github.com/VIPBOLTE/GOKU_USERBOT)
 
 ## Deploy Locally
 - [Traditional Method](#local-deploy---traditional-method)
 - [Easy Method](#local-deploy---easy-method)
-- [Ultroid CLI](#ultroid-cli)
+- [GOKU_USERBOT CLI](#GOKU_USERBOT-cli)
 
 ### Local Deploy - Easy Method
 - Linux - `wget -O locals.py https://git.io/JY9UM && python3 locals.py`
@@ -77,7 +77,7 @@ Get the [Necessary Variables](#Necessary-Variables) and then click the button be
     `wget -O session.py https://git.io/JY9JI && python session.py`
   - For Windows Users:
     `cd desktop ; wget https://git.io/JY9JI -o ultroid.py ; python ultroid.py`
-- Fill your details in a `.env` file, as given in [`.env.sample`](https://github.com/TeamUltroid/Ultroid/blob/main/.env.sample).
+- Fill your details in a `.env` file, as given in [`.env.sample`](https://github.com/VIPBOLTE/GOKU_USERBOT/blob/main/.env.sample).
 (You can either edit and rename the file or make a new file named `.env`.)
 - Run the bot:
   - Linux Users:
@@ -100,7 +100,7 @@ One of the following database:
 
 ## Session String
 Different ways to get your `SESSION`:
-* [![Run on Repl.it](https://replit.com/badge/github/TeamUltroid/Ultroid)](https://replit.com/@TeamUltroid/UltroidStringSession)
+* [![Run on Repl.it](https://replit.com/badge/github/VIPBOLTE/GOKU_USERBOT)](https://replit.com/@Teamultroid/UltroidStringSession)
 * Linux : `wget -O session.py https://git.io/JY9JI && python3 session.py`
 * PowerShell : `cd desktop ; wget https://git.io/JY9JI ; python ultroid.py`
 * Termux : `wget -O session.py https://git.io/JY9JI && python session.py`
@@ -115,8 +115,8 @@ Ultroid is licensed under [GNU Affero General Public License](https://www.gnu.or
 ---
 
 # Credits
-* [![TeamUltroid-Devs](https://img.shields.io/static/v1?label=Teamultroid&message=devs&color=critical)](https://t.me/UltroidDevs)
+* [![TeamUltroid-Devs](https://img.shields.io/static/v1?label=Teamultroid&message=devs&color=critical)](https://t.me/Zindagi_hai_tere_nal)
 * [Lonami](https://github.com/LonamiWebs/) for [Telethon.](https://github.com/LonamiWebs/Telethon)
 * [MarshalX](https://github.com/MarshalX) for [PyTgCalls.](https://github.com/MarshalX/tgcalls)
 
-> Made with 💕 by [@TeamUltroid](https://t.me/TeamUltroid).    
+> Made with 💕 by [@goku_groupz](https://t.me/goku_groupz).    
