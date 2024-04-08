@@ -28,6 +28,6 @@ jobs:
           commit_message: 'Strings: Auto Count'
           commit_options: '--no-verify'
           repository: .
-          commit_user_name: TeamUltroid
+          commit_user_name: VIPBOLTE
           commit_user_email: 48654350+buddhhu@users.noreply.github.com
           commit_author: Amit Sharma <48654350+buddhhu@users.noreply.github.com>
